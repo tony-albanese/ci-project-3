@@ -7,3 +7,10 @@ __pycache__/
 node_modules/
 .github/
 cloudinary_python.txt
+/.idea/.gitignore
+/.idea/ci-project-3.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/test.py
+/.idea/vcs.xml
