@@ -5,6 +5,7 @@ from rich import print
 from rich.console import Console
 import re
 
+
 def calculate_thermodynamic_properties():
     reactants = []
     products = []
@@ -23,7 +24,7 @@ def get_reactants():
         print("When you are done entering reactants, type done")
         user_input = input("Reactant: ")
 
-        if (user_input == 'done'):
+        if user_input == 'done':
             break
         if validate_reaction_entry(user_input) and value_is_valid(44, user_input):
             pair = user_input.split(",")
@@ -44,7 +45,7 @@ def get_products():
         print("When you are done entering products, type done")
         user_input = input("Product: ")
 
-        if (user_input == 'done'):
+        if user_input == 'done':
             break
         if validate_reaction_entry(user_input) and value_is_valid(44, user_input):
             pair = user_input.split(",")
@@ -74,6 +75,7 @@ def value_is_valid(max, entry):
         return False
     else:
         return True
+
 
 def calculate_enthalpy_change(data_frame: pandas.core.frame.DataFrame, reactants: list, products: list):
     column_name = 'dH'
@@ -122,7 +124,7 @@ def calculate_free_energy(data_frame: pandas.core.frame.DataFrame, reactants: li
     return energy_change
 
 
-def calculateEntropy(data_frame: pandas.core.frame.DataFrame, reactants: list, products: list):
+def calculate_entropy_change(data_frame: pandas.core.frame.DataFrame, reactants: list, products: list):
     column_name = 'dS'
     sum_products = 0
     sum_reactants = 0
