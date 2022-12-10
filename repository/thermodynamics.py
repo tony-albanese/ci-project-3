@@ -1,5 +1,6 @@
 import pandas.core.frame
 
+import data.data_set
 from data.data_set import *
 from rich import print
 from rich.console import Console
@@ -150,5 +151,3 @@ def calculate_entropy_change(data_frame: pandas.core.frame.DataFrame, reactants:
     print(sum_reactants)
     return entropy_change
 
-
-print(calculate_enthalpy_change(df, rcts, prods))
