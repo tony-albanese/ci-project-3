@@ -5,16 +5,7 @@ from rich import print
 from rich.console import Console
 import re
 
-df = load_data_frame()
-print(df.head())
-
-
-# method to get reactants
-# method to get products
-# method to do calculation
-# method to validate input
-
-def calculateThermodynamicProperties():
+def calculate_thermodynamic_properties():
     reactants = []
     products = []
     while True:
@@ -25,7 +16,7 @@ def calculateThermodynamicProperties():
             break
 
 
-def getReactants():
+def get_reactants():
     reactants = []
     while True:
         print("Enter a reactant and the coefficient from the balanced equation separated by a comma.")
@@ -34,7 +25,7 @@ def getReactants():
 
         if (user_input == 'done'):
             break
-        if validateReactionEntry(user_input) and valueIsValid(44, user_input):
+        if validate_reaction_entry(user_input) and value_is_valid(44, user_input):
             pair = user_input.split(",")
             row = int(pair[0])
             coefficient = int(pair[1])
@@ -46,7 +37,7 @@ def getReactants():
     return reactants
 
 
-def getProducts():
+def get_products():
     products = []
     while True:
         print("Enter a product and the coefficient from the balanced equation separated by a comma.")
@@ -55,7 +46,7 @@ def getProducts():
 
         if (user_input == 'done'):
             break
-        if validateReactionEntry(user_input) and valueIsValid(44, user_input):
+        if validate_reaction_entry(user_input) and value_is_valid(44, user_input):
             pair = user_input.split(",")
             row = int(pair[0])
             coefficient = int(pair[1])
@@ -68,7 +59,7 @@ def getProducts():
     return products
 
 
-def validateReactionEntry(entry):
+def validate_reaction_entry(entry):
     pattern = '[0-9]+,[1-9]+'
     is_match = re.match(pattern, entry)
     if is_match is not None:
@@ -77,17 +68,12 @@ def validateReactionEntry(entry):
         return False
 
 
-def valueIsValid(max, entry):
+def value_is_valid(max, entry):
     values = entry.split(",")
     if int(values[0]) > max:
         return False
     else:
         return True
-
-
-rcts = getReactants()
-prods = getProducts()
-
 
 def calculate_enthalpy_change(data_frame: pandas.core.frame.DataFrame, reactants: list, products: list):
     column_name = 'dH'
