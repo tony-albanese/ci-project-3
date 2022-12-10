@@ -9,7 +9,6 @@ df = load_data_frame()
 print(df.head())
 
 
-
 # method to get reactants
 # method to get products
 # method to do calculation
@@ -89,9 +88,10 @@ def valueIsValid(max, entry):
 rcts = getReactants()
 prods = getProducts()
 
-#print(rcts)
-#print(type(rcts))
-#print(type(prods))
+
+# print(rcts)
+# print(type(rcts))
+# print(type(prods))
 
 
 def calculate_enthalpy_change(data_frame: pandas.core.frame.DataFrame, reactants: list, products: list):
@@ -103,22 +103,16 @@ def calculate_enthalpy_change(data_frame: pandas.core.frame.DataFrame, reactants
         row = reactant[0]
         coefficient = reactant[1]
         enthalpy = data_frame._get_value(row, column_name)
-        sum_reactants = sum_reactants + enthalpy*coefficient
+        sum_reactants = sum_reactants + enthalpy * coefficient
 
     for product in products:
         row = product[0]
         coefficient = product[1]
         enthalpy = data_frame._get_value(row, column_name)
-        sum_products = sum_products + enthalpy*coefficient
+        sum_products = sum_products + enthalpy * coefficient
 
     enthalpy_change = sum_products - sum_reactants
-
-    print("Sum products: ")
-    print(sum_products)
-    print("Sum of reactants:")
-    print(sum_reactants)
     return enthalpy_change
-
 
 
 def calculate_free_energy(data_frame: pandas.core.frame.DataFrame, reactants: list, products: list):
@@ -130,13 +124,13 @@ def calculate_free_energy(data_frame: pandas.core.frame.DataFrame, reactants: li
         row = reactant[0]
         coefficient = reactant[1]
         enthalpy = data_frame._get_value(row, column_name)
-        sum_reactants = sum_reactants + enthalpy*coefficient
+        sum_reactants = sum_reactants + enthalpy * coefficient
 
     for product in products:
         row = product[0]
         coefficient = product[1]
         enthalpy = data_frame._get_value(row, column_name)
-        sum_products = sum_products + enthalpy*coefficient
+        sum_products = sum_products + enthalpy * coefficient
 
     energy_change = sum_products - sum_reactants
 
@@ -147,8 +141,31 @@ def calculate_free_energy(data_frame: pandas.core.frame.DataFrame, reactants: li
     return energy_change
 
 
-def calculateEntropy():
-    pass
+def calculateEntropy(data_frame: pandas.core.frame.DataFrame, reactants: list, products: list):
+    column_name = 'dS'
+    sum_products = 0
+    sum_reactants = 0
+
+    for reactant in reactants:
+        row = reactant[0]
+        coefficient = reactant[1]
+        enthalpy = data_frame._get_value(row, column_name)
+        sum_reactants = sum_reactants + enthalpy * coefficient
+
+    for product in products:
+        row = product[0]
+        coefficient = product[1]
+        enthalpy = data_frame._get_value(row, column_name)
+        sum_products = sum_products + enthalpy * coefficient
+
+    #Divide by 1000 because of J to kJ unit conversion
+    entropy_change = (sum_products - sum_reactants)/1000
+
+    print("Sum products: ")
+    print(sum_products)
+    print("Sum of reactants:")
+    print(sum_reactants)
+    return entropy_change
 
 
 print(calculate_enthalpy_change(df, rcts, prods))
