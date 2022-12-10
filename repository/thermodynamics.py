@@ -89,11 +89,6 @@ rcts = getReactants()
 prods = getProducts()
 
 
-# print(rcts)
-# print(type(rcts))
-# print(type(prods))
-
-
 def calculate_enthalpy_change(data_frame: pandas.core.frame.DataFrame, reactants: list, products: list):
     column_name = 'dH'
     sum_products = 0
@@ -158,8 +153,8 @@ def calculateEntropy(data_frame: pandas.core.frame.DataFrame, reactants: list, p
         enthalpy = data_frame._get_value(row, column_name)
         sum_products = sum_products + enthalpy * coefficient
 
-    #Divide by 1000 because of J to kJ unit conversion
-    entropy_change = (sum_products - sum_reactants)/1000
+    # Divide by 1000 because of J to kJ unit conversion
+    entropy_change = (sum_products - sum_reactants) / 1000
 
     print("Sum products: ")
     print(sum_products)
