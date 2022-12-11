@@ -21,9 +21,37 @@ def balance_reaction(reactants: list, products: list):
     except:
         return ChemResult(False, reaction)
 
+def generate_reaction()->Reaction:
+    print("Enter reactants. Type 'done' when you are finished.")
+    reactants = enter_formulas()
+    print("Enter products. Type 'done' when you are finished.")
+    products = enter_formulas()
+    return Reaction(reactants, products)
+
+
+class StoichiometryResult:
+    def __init__(self, status: bool, formula_amounts: list, message : str =""):
+        self.status = status
+        self.formula_amounts = formula_amounts
+        self.message = message
+
+def calculate_stoichiometry_by_mass(reaction: Reaction, position: int, amount: float) -> StoichiometryResult:
+    try:
+        stoichiometry = reaction.get_amounts(position, grams=amount)
+        return StoichiometryResult(True, stoichiometry)
+    except:
+        return StoichiometryResult(False, [], "Calculations could not be performed.")
+
+def calculate_stoichiometry_by_mole(reaction: Reaction, position: int, amount: float) -> StoichiometryResult:
+    try:
+        stoichiometry = reaction.get_amounts(position, moles=amount)
+        return StoichiometryResult(True, stoichiometry)
+    except:
+        return StoichiometryResult(False, [], "Calculations could not be performed.")
 
 class ChemResult:
     def __init__(self, status: bool, reaction: Reaction):
         self.status = status
         self.reaction = reaction
+
 

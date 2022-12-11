@@ -20,4 +20,20 @@ def test_balance_equation():
     else:
         print(result.reaction.formula)
 
-test_balance_equation()
+
+def test_stoichiometry():
+    reaction = generate_reaction()
+    result = calculate_stoichiometry_by_mass(reaction, 1, 10)
+    if(result.status == True):
+        print(result.formula_amounts)
+    else:
+        print(result.message)
+
+    mole_result = calculate_stoichiometry_by_mole(reaction, 1, 4)
+    if (mole_result.status == True):
+        print(mole_result.formula_amounts)
+    else:
+        print(mole_result.message)
+
+
+test_stoichiometry()
