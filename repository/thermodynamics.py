@@ -175,10 +175,15 @@ def generate_thermodynamic_calculations():
 
 def extract_chemical_formulas(df: pandas.core.frame.DataFrame, chemical_list: list):
     product_formulas = []
-    col = 'formula'
+    col_name = 'name'
+    col_state = 'state'
+    col_formula = 'formula'
     for chemical in chemical_list:
         row = chemical[0]
-        formula = df._get_value(row, col)
-        product_formulas.append(formula)
+        name = df._get_value(row, col_name)
+        formula = df._get_value(row, col_formula)
+        state = df._get_value(row, col_state)
+        full_formula = f'{formula} {name} {state}'
+        product_formulas.append(full_formula)
 
     return product_formulas
