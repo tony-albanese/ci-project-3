@@ -13,3 +13,5 @@ dS = calculate_entropy_change(df, reacts, prods)
 print(dH)
 print(dG)
 print(dS)
+
+generate_thermodynamic_calculations()
