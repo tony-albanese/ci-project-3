@@ -8,8 +8,14 @@ class ChemApp(App):
     def compose(self) -> ComposeResult:
         yield Header()
         yield Footer()
+        yield MainPanel()
         yield InputArea()
-        yield  MainPanel()
+
+class MainPanel(Static):
+    def compose(self) -> ComposeResult:
+        yield InstructionsWindow()
+        yield DataWindow()
+        yield OutputWindow()
 
 
 class InstructionsWindow(Static):
@@ -24,10 +30,7 @@ class OutputWindow(Static):
     def compose(self) -> ComposeResult:
         yield Placeholder()
 
-class MainPanel(Static):
-    def compose(self) -> ComposeResult:
-        yield Container(InstructionsWindow(), DataWindow(), OutputWindow())
-
 class InputArea(Static):
     def compose(self) -> ComposeResult:
         yield Placeholder()
+

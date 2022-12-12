@@ -1,8 +1,19 @@
-Placeholder {
-width: 5;
-height: 2;
+
+MainPanel {
+layout: horizontal;
+height: 4fr;
 }
 
-Container {
-layout: horizontal;
+InputArea {
+height: 1fr;
+}
+
+DataWindow {
+width: 1fr;
+}
+OutputWindow {
+width: 1fr;
+}
+InstructionsWindow {
+width: 1fr;
 }
