@@ -283,6 +283,6 @@ class OutputWindow(Static):
 class InputArea(Static):
     def compose(self) -> ComposeResult:
         yield Label("Reactants")
-        yield Input(placeholder="(Example input: 3,2", id="reactant_input")
+        yield Input(placeholder="Example: 3,2 to enter 2 mol butane", id="reactant_input")
         yield Label("Products")
-        yield Input(placeholder="Example 2,3", id="product_input")
+        yield Input(placeholder="Example: 0,5 to enter 5 mol methane", id="product_input")
