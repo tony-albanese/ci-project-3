@@ -5,9 +5,10 @@ height: 4fr;
 }
 
 InputArea {
-height: 1fr;
+height: 2fr;
 border: wide red;
 }
+
 
 DataWindow {
 width: 1fr;
