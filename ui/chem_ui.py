@@ -1,7 +1,9 @@
+from rich.table import Table
+from textual import events
 from textual.app import App, ComposeResult
 from textual.containers import Container
 from textual.reactive import reactive
-from textual.widgets import Button, Header, Footer, Static, Placeholder, Input, Label
+from textual.widgets import Button, Header, Footer, Static, Placeholder, Input, Label, TextLog
 
 from list_item import ListItem
 from list_view_class import ListView
@@ -14,7 +16,12 @@ class ChemApp(App):
         yield Header()
         yield Footer()
         yield MainPanel()
-        yield InputArea()
+        #yield InputArea()
+
+    def on_ready(self) ->None:
+        print("on_ready")
+        data_log = self.query_one("#data_log_window", TextLog)
+        data_log.write("Hello, world!")
 
 class MainPanel(Static):
     def compose(self) -> ComposeResult:
@@ -22,28 +29,81 @@ class MainPanel(Static):
         yield DataWindow()
         yield OutputWindow()
 
+class DataWindow(Static):
+    def compose(self) -> ComposeResult:
+        print("DataWindow compose()")
+        yield TextLog(id="data_log_window")
+
+    def _on_mount(self, event: events.Mount) -> None:
+        log = self.query_one(TextLog)
+        table = self.generate_data_table()
+        log.write(table)
+    def generate_data_table(self):
+        df = load_data_frame()
+        table = Table(title="Chemical Data")
+        table.add_column('index')
+        table.add_column('Name')
+        table.add_column('formula')
+        table.add_column('state')
+        for index, row in df.iterrows():
+            table.add_row(str(index), row["name"],row["formula"],row["state"] )
+        return table
 
 class InstructionsWindow(Static):
     def compose(self) -> ComposeResult:
         yield Placeholder()
 
-class DataWindow(Static):
-    def compose(self) -> ComposeResult:
-        list_view = ListView()
-        items = self.generate_list()
-        for item in items:
-            list_view.append(item)
-        yield list_view
-    def generate_list(self):
-
-        df = load_data_frame()
 
 
-        labels = []
-        for index, row in df.iterrows():
-            item = ListItem(Label(f'{row["name"]}\t{row["formula"]}'))
-            labels.append(item)
-        return labels
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class OutputWindow(Static):
     def compose(self) -> ComposeResult:
