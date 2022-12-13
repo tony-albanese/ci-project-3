@@ -4,7 +4,7 @@ from textual.app import App, ComposeResult
 from textual.containers import Container
 from textual.reactive import reactive
 from textual.widgets import Button, Header, Footer, Static, Placeholder, Input, Label, TextLog
-
+import re
 from list_item import ListItem
 from list_view_class import ListView
 from data_set import *
@@ -12,6 +12,10 @@ from data_set import *
 
 class ChemApp(App):
     CSS_PATH = "chem_ui.css"
+
+    df = load_data_frame()
+    reactants = []
+    products = []
     def compose(self) -> ComposeResult:
         yield Header()
         yield Footer()
@@ -25,11 +29,47 @@ class ChemApp(App):
             if(message.input.id=='reactant_input'):
                 log = self.query_one("#reactants")
                 log.write(message.value)
+                reactant = self.handle_input_response(message.value)
+                if(reactant[0] != 'error'):
+                    self.add_reactant(reactant)
                 message.input.value = ""
             elif(message.input.id == 'product_input'):
                 log = self.query_one("#products")
                 log.write(message.value)
                 message.input.value = ""
+
+    def handle_input_response(self, user_input):
+        if(self.validate_reaction_entry(user_input) and self.value_is_valid(44, user_input)):
+            pair = user_input.split(",")
+            row = int(pair[0])
+            coefficient = int(pair[1])
+            asTuple = (row, coefficient)
+            return asTuple
+        else:
+            output_log = self.query_one('#output', TextLog)
+            output_log.write("Something went wrong.")
+            return ("error", "bad input")
+
+    def add_reactant(self, reactant):
+        self.reactants.append(reactant)
+
+    def add_product(self, product):
+        self.products.append(product)
+    def validate_reaction_entry(self, entry):
+        pattern = '[0-9]+,[1-9]+'
+        is_match = re.match(pattern, entry)
+        if is_match is not None:
+            return True
+        else:
+            return False
+
+    def value_is_valid(self, max, entry):
+        values = entry.split(",")
+        if int(values[0]) > max:
+            return False
+        else:
+            return True
+
 class MainPanel(Static):
     def compose(self) -> ComposeResult:
         yield InstructionsWindow()
