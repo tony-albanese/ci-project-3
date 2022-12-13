@@ -6,14 +6,18 @@ height: 4fr;
 
 InputArea {
 height: 1fr;
+border: wide red;
 }
 
 DataWindow {
 width: 1fr;
+border: wide red;
 }
 OutputWindow {
 width: 1fr;
+border: wide blue;
 }
 InstructionsWindow {
 width: 1fr;
+border: wide green;
 }
