@@ -127,8 +127,8 @@ class OutputPanel(Static):
 class UserInputArea(Static):
     def compose(self) -> ComposeResult:
         yield InputArea()
-        yield Button()
-        yield Button()
+        yield Button("Calculate!", id="btn_calculate", variant="success")
+        yield Button("Clear", id="btn_clear", variant="error")
 
 class OutputWindow(Static):
     def compose(self) -> ComposeResult:
