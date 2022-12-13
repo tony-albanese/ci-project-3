@@ -28,7 +28,6 @@ class ChemApp(App):
         if message.value:
             if(message.input.id=='reactant_input'):
                 log = self.query_one("#reactants")
-                log.write(message.value)
                 reactant = self.handle_input_response(message.value)
                 if(reactant[0] != 'error'):
                     self.add_reactant(reactant)
@@ -36,7 +35,6 @@ class ChemApp(App):
                 message.input.value = ""
             elif(message.input.id == 'product_input'):
                 log = self.query_one("#products")
-                log.write(message.value)
                 product = self.handle_input_response(message.value)
                 if (product[0] != 'error'):
                     self.add_product(product)
