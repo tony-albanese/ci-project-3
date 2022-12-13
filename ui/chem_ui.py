@@ -133,9 +133,10 @@ class ChemApp(App):
         if event.button.id == 'btn_clear':
             self.clear_ui()
         if event.button.id == 'btn_calculate':
-            result = self.perform_calculations()
             output_log = self.query_one('#output', TextLog)
-            output_log.write(result)
+            result = self.perform_calculations(output_log)
+
+
 
     def clear_ui(self):
         output_log = self.query_one('#output', TextLog)
@@ -186,13 +187,19 @@ class ChemApp(App):
         state = self.df._get_value(row_index, 'state')
         return f'{name} {formula} {state}'
 
-    def perform_calculations(self):
+    def perform_calculations(self, log: TextLog):
         dH = calculate_enthalpy_change(self.df, self.reactants, self.products)
         dG = calculate_free_energy(self.df, self.reactants, self.products)
         dS = calculate_entropy_change(self.df, self.reactants, self.products)
 
         reactant_formulas = extract_chemical_formulas(self.df, self.reactants)
-        product_formulas = extract_chemical_formulas(self.df, self.reactants)
+        product_formulas = extract_chemical_formulas(self.df, self.products)
+
+        log.write(reactant_formulas)
+        log.write(product_formulas)
+        log.write(f'The enthalpy change (dH) is: {dH} kJ per mol')
+        log.write(f'The free energy change (dG) is: {dG} kJ per mol')
+        log.write(f'The entropy change (dS) is: {dS} kJ per mol per Kelvin')
 
         report = f"""\
         The reactants are: {reactant_formulas}
