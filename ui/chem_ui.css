@@ -6,7 +6,6 @@ height: 4fr;
 
 UserInputArea {
 border: wide red;
-
 }
 
 Button {
@@ -14,7 +13,7 @@ width: 1fr;
 }
 
 DataWindow {
-width: 1fr;
+width: 0.9fr;
 border: wide red;
 }
 OutputWindow {
@@ -23,7 +22,7 @@ border: wide blue;
 }
 
 OutputPanel {
-width: 1fr;
+width: 1.1fr;
 border: wide purple;
 }
 
