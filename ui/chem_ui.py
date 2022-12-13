@@ -16,7 +16,7 @@ class ChemApp(App):
         yield Header()
         yield Footer()
         yield MainPanel()
-        #yield InputArea()
+        yield InputArea()
 
     def on_ready(self) ->None:
         print("on_ready")
@@ -50,10 +50,16 @@ class DataWindow(Static):
         return table
 
 class InstructionsWindow(Static):
+
+    WELCOME_MESSAGE = '''\
+    These are the initial instructions
+    '''
     def compose(self) -> ComposeResult:
-        yield Placeholder()
+        yield TextLog(id="instruction_log_window")
 
-
+    def _on_mount(self, event: events.Mount) -> None:
+        instructions_window = self.query_one("#instruction_log_window")
+        instructions_window.write(self.WELCOME_MESSAGE)
 
 
 
