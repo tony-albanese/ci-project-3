@@ -17,10 +17,9 @@ class ChemApp(App):
     reactants = []
     products = []
     def compose(self) -> ComposeResult:
-        yield Header()
         yield Footer()
         yield MainPanel()
-        yield InputArea(id="input")
+        yield UserInputArea()
 
     #Handle the user input
     def on_input_submitted(self, message: Input.Submitted) -> None:
@@ -124,62 +123,12 @@ class OutputPanel(Static):
         yield TextLog(id= "output")
 
 
-
-
-class CalcHandler():
-    def __init__(self, input_window: Input, product_window: TextLog, reactant_window: TextLog, message_window: TextLog):
-        self.input_window = input_window
-        self.product_window = product_window
-        self.reactant_window = reactant_window
-        self.message_window = message_window
-        pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#Container for the input fields and two buttons
+class UserInputArea(Static):
+    def compose(self) -> ComposeResult:
+        yield InputArea()
+        yield Button()
+        yield Button()
 
 class OutputWindow(Static):
     def compose(self) -> ComposeResult:

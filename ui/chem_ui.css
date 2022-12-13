@@ -4,11 +4,14 @@ layout: horizontal;
 height: 4fr;
 }
 
-InputArea {
-height: 2fr;
+UserInputArea {
 border: wide red;
+
 }
 
+Button {
+width: 1fr;
+}
 
 DataWindow {
 width: 1fr;
