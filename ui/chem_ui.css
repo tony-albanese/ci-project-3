@@ -17,7 +17,18 @@ OutputWindow {
 width: 1fr;
 border: wide blue;
 }
+
+OutputPanel {
+width: 1fr;
+border: wide purple;
+}
+
 InstructionsWindow {
 width: 1fr;
 border: wide green;
+}
+
+#products, #reactants, #output {
+border: wide white;
+height: 1fr;
 }

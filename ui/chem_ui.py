@@ -16,18 +16,14 @@ class ChemApp(App):
         yield Header()
         yield Footer()
         yield MainPanel()
-        yield InputArea()
+        yield InputArea(id="input")
 
-    def on_ready(self) ->None:
-        print("on_ready")
-        data_log = self.query_one("#data_log_window", TextLog)
-        data_log.write("Hello, world!")
 
 class MainPanel(Static):
     def compose(self) -> ComposeResult:
         yield InstructionsWindow()
         yield DataWindow()
-        yield OutputWindow()
+        yield OutputPanel()
 
 class DataWindow(Static):
     def compose(self) -> ComposeResult:
@@ -61,7 +57,11 @@ class InstructionsWindow(Static):
         instructions_window = self.query_one("#instruction_log_window")
         instructions_window.write(self.WELCOME_MESSAGE)
 
-
+class OutputPanel(Static):
+    def compose(self) -> ComposeResult:
+        yield TextLog(id="products")
+        yield TextLog(id = "reactants")
+        yield TextLog(id= "output")
 
 
 
