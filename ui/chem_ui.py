@@ -32,6 +32,7 @@ class ChemApp(App):
                 reactant = self.handle_input_response(message.value)
                 if(reactant[0] != 'error'):
                     self.add_reactant(reactant)
+                    log.write(self.get_chemical_name(reactant[0]))
                 message.input.value = ""
             elif(message.input.id == 'product_input'):
                 log = self.query_one("#products")
@@ -39,6 +40,7 @@ class ChemApp(App):
                 product = self.handle_input_response(message.value)
                 if (product[0] != 'error'):
                     self.add_product(product)
+                    log.write(self.get_chemical_name(product[0]))
                 message.input.value = ""
 
     def handle_input_response(self, user_input):
@@ -72,6 +74,12 @@ class ChemApp(App):
             return False
         else:
             return True
+
+    def get_chemical_name(self, row_index):
+        name = self.df._get_value(row_index, 'name')
+        formula = self.df._get_value(row_index, 'formula')
+        state = self.df._get_value(row_index, 'state')
+        return f'{name} {formula} {state}'
 
 class MainPanel(Static):
     def compose(self) -> ComposeResult:
