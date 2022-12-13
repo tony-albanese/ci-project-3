@@ -40,6 +40,21 @@ class ChemApp(App):
                     log.write(self.get_chemical_name(product[0]))
                 message.input.value = ""
 
+    def on_button_pressed(self, event: Button.Pressed):
+        if event.button.id == 'btn_clear':
+            self.clear_ui()
+
+    def clear_ui(self):
+        output_log = self.query_one('#output', TextLog)
+        reactant_log = self.query_one("#reactants")
+        product_log = self.query_one("#products")
+
+        output_log.clear()
+        reactant_log.clear()
+        product_log.clear()
+
+        self.reactants.clear()
+        self.products.clear()
     def handle_input_response(self, user_input):
         if(self.validate_reaction_entry(user_input) and self.value_is_valid(44, user_input)):
             pair = user_input.split(",")
