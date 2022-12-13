@@ -25,9 +25,11 @@ class ChemApp(App):
             if(message.input.id=='reactant_input'):
                 log = self.query_one("#reactants")
                 log.write(message.value)
+                message.input.value = ""
             elif(message.input.id == 'product_input'):
                 log = self.query_one("#products")
                 log.write(message.value)
+                message.input.value = ""
 class MainPanel(Static):
     def compose(self) -> ComposeResult:
         yield InstructionsWindow()
