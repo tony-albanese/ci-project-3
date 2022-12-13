@@ -1,5 +1,8 @@
 import pandas
-from rich.table import Table
+from rich.columns import Columns
+from rich.panel import Panel
+from rich.table import Table, Column
+from rich.text import Text
 from textual import events
 from textual.app import App, ComposeResult
 from textual.containers import Container
@@ -136,8 +139,6 @@ class ChemApp(App):
             output_log = self.query_one('#output', TextLog)
             result = self.perform_calculations(output_log)
 
-
-
     def clear_ui(self):
         output_log = self.query_one('#output', TextLog)
         reactant_log = self.query_one("#reactants")
@@ -239,15 +240,27 @@ class DataWindow(Static):
 
 class InstructionsWindow(Static):
 
-    WELCOME_MESSAGE = '''\
-    These are the initial instructions
+    INSTRUCTIONS = '''
+    Instructions\n
+    This app will calculate the changes in enthalpy,
+    free energy, and entropy for a set 
+    reactants and products you select.
+    
+    Use the table to find the chemical you need and enter
+    the index and the coefficient separated by a comma.
+    There is an input box for reactants and one for
+    products. Press the Calculate button to perform
+    the calculations. Clear will clear the screen.
     '''
     def compose(self) -> ComposeResult:
         yield TextLog(id="instruction_log_window")
 
     def _on_mount(self, event: events.Mount) -> None:
         instructions_window = self.query_one("#instruction_log_window")
-        instructions_window.write(self.WELCOME_MESSAGE)
+        #panel = Panel(Text(self.INSTRUCTIONS), expand=False, title="Instructions")
+        text = Text(self.INSTRUCTIONS)
+        instructions_window.write(text)
+
 
 class OutputPanel(Static):
     def compose(self) -> ComposeResult:
