@@ -36,6 +36,9 @@ class ChemApp(App):
             elif(message.input.id == 'product_input'):
                 log = self.query_one("#products")
                 log.write(message.value)
+                product = self.handle_input_response(message.value)
+                if (product[0] != 'error'):
+                    self.add_product(product)
                 message.input.value = ""
 
     def handle_input_response(self, user_input):
