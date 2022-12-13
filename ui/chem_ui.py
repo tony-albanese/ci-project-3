@@ -1,3 +1,4 @@
+import pandas
 from rich.table import Table
 from textual import events
 from textual.app import App, ComposeResult
@@ -9,6 +10,94 @@ from list_item import ListItem
 from list_view_class import ListView
 from data_set import *
 
+
+def calculate_enthalpy_change(data_frame, reactants: list, products: list):
+    column_name = 'dH'
+    sum_products = 0
+    sum_reactants = 0
+
+    for reactant in reactants:
+        row = reactant[0]
+        coefficient = reactant[1]
+        enthalpy = data_frame._get_value(row, column_name)
+        sum_reactants = sum_reactants + enthalpy * coefficient
+
+    for product in products:
+        row = product[0]
+        coefficient = product[1]
+        enthalpy = data_frame._get_value(row, column_name)
+        sum_products = sum_products + enthalpy * coefficient
+
+    enthalpy_change = sum_products - sum_reactants
+    return enthalpy_change
+
+
+def calculate_free_energy(data_frame, reactants: list, products: list):
+    column_name = 'dG'
+    sum_products = 0
+    sum_reactants = 0
+
+    for reactant in reactants:
+        row = reactant[0]
+        coefficient = reactant[1]
+        enthalpy = data_frame._get_value(row, column_name)
+        sum_reactants = sum_reactants + enthalpy * coefficient
+
+    for product in products:
+        row = product[0]
+        coefficient = product[1]
+        enthalpy = data_frame._get_value(row, column_name)
+        sum_products = sum_products + enthalpy * coefficient
+
+    energy_change = sum_products - sum_reactants
+
+    print("Sum products: ")
+    print(sum_products)
+    print("Sum of reactants:")
+    print(sum_reactants)
+    return energy_change
+
+
+def calculate_entropy_change(data_frame, reactants: list, products: list):
+    column_name = 'dS'
+    sum_products = 0
+    sum_reactants = 0
+
+    for reactant in reactants:
+        row = reactant[0]
+        coefficient = reactant[1]
+        enthalpy = data_frame._get_value(row, column_name)
+        sum_reactants = sum_reactants + enthalpy * coefficient
+
+    for product in products:
+        row = product[0]
+        coefficient = product[1]
+        enthalpy = data_frame._get_value(row, column_name)
+        sum_products = sum_products + enthalpy * coefficient
+
+    # Divide by 1000 because of J to kJ unit conversion
+    entropy_change = (sum_products - sum_reactants) / 1000
+
+    print("Sum products: ")
+    print(sum_products)
+    print("Sum of reactants:")
+    print(sum_reactants)
+    return entropy_change
+
+def extract_chemical_formulas(df, chemical_list):
+    product_formulas = []
+    col_name = 'name'
+    col_state = 'state'
+    col_formula = 'formula'
+    for chemical in chemical_list:
+        row = chemical[0]
+        name = df._get_value(row, col_name)
+        formula = df._get_value(row, col_formula)
+        state = df._get_value(row, col_state)
+        full_formula = f'{formula} {name} {state}'
+        product_formulas.append(full_formula)
+
+    return product_formulas
 
 class ChemApp(App):
     CSS_PATH = "chem_ui.css"
@@ -43,6 +132,10 @@ class ChemApp(App):
     def on_button_pressed(self, event: Button.Pressed):
         if event.button.id == 'btn_clear':
             self.clear_ui()
+        if event.button.id == 'btn_calculate':
+            result = self.perform_calculations()
+            output_log = self.query_one('#output', TextLog)
+            output_log.write(result)
 
     def clear_ui(self):
         output_log = self.query_one('#output', TextLog)
@@ -92,6 +185,24 @@ class ChemApp(App):
         formula = self.df._get_value(row_index, 'formula')
         state = self.df._get_value(row_index, 'state')
         return f'{name} {formula} {state}'
+
+    def perform_calculations(self):
+        dH = calculate_enthalpy_change(self.df, self.reactants, self.products)
+        dG = calculate_free_energy(self.df, self.reactants, self.products)
+        dS = calculate_entropy_change(self.df, self.reactants, self.products)
+
+        reactant_formulas = extract_chemical_formulas(self.df, self.reactants)
+        product_formulas = extract_chemical_formulas(self.df, self.reactants)
+
+        report = f"""\
+        The reactants are: {reactant_formulas}
+        The products are: {product_formulas} 
+        The enthalpy change (dH) is: {dH} kJ per mol
+        The free energy change (dG) is: {dG} kJ per mol
+        The entropy change (dS) is: {dS} kJ per mol per Kelvin
+        """
+        print(report)
+        return report
 
 class MainPanel(Static):
     def compose(self) -> ComposeResult:
