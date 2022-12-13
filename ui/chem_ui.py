@@ -18,7 +18,12 @@ class ChemApp(App):
         yield MainPanel()
         yield InputArea(id="input")
 
-
+    #Handle the user input
+    def on_input_submitted(self, message: Input.Submitted) -> None:
+        """A coroutine to handle a text changed message."""
+        if message.value:
+            log = self.query_one("#products")
+            log.write(message.value)
 class MainPanel(Static):
     def compose(self) -> ComposeResult:
         yield InstructionsWindow()
@@ -63,6 +68,16 @@ class OutputPanel(Static):
         yield TextLog(id = "reactants")
         yield TextLog(id= "output")
 
+
+
+
+class CalcHandler():
+    def __init__(self, input_window: Input, product_window: TextLog, reactant_window: TextLog, message_window: TextLog):
+        self.input_window = input_window
+        self.product_window = product_window
+        self.reactant_window = reactant_window
+        self.message_window = message_window
+        pass
 
 
 
@@ -117,5 +132,7 @@ class OutputWindow(Static):
 
 class InputArea(Static):
     def compose(self) -> ComposeResult:
-        yield Input(placeholder="Some input")
-
+        yield Label("Reactants")
+        yield Input(placeholder="(Example input: 3,2", id="reactant_input")
+        yield Label("Products")
+        yield Input(placeholder="Example 2,3", id="product_input")
