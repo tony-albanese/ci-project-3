@@ -22,8 +22,12 @@ class ChemApp(App):
     def on_input_submitted(self, message: Input.Submitted) -> None:
         """A coroutine to handle a text changed message."""
         if message.value:
-            log = self.query_one("#products")
-            log.write(message.value)
+            if(message.input.id=='reactant_input'):
+                log = self.query_one("#reactants")
+                log.write(message.value)
+            elif(message.input.id == 'product_input'):
+                log = self.query_one("#products")
+                log.write(message.value)
 class MainPanel(Static):
     def compose(self) -> ComposeResult:
         yield InstructionsWindow()
@@ -64,8 +68,8 @@ class InstructionsWindow(Static):
 
 class OutputPanel(Static):
     def compose(self) -> ComposeResult:
-        yield TextLog(id="products")
         yield TextLog(id = "reactants")
+        yield TextLog(id="products")
         yield TextLog(id= "output")
 
 
