@@ -29,19 +29,67 @@ of dH, dG, and dS are calculated and displayed neatly.
 
 # User Stories
 As a User I want to 
+* Navigate the sections of the app with keyboard or mouse.
 * Have the chemical data visible to me in the app.
 * Scroll through the chemical data easily
 * easiy enter chemical quantities and formulas
 * easily distinguish between products and reactants
 * clear my entries if I make a mistake
 * have instructions readily available so I know what to do
-* given hints as to how to properly enter data
+* be given hints as to how to properly enter data
 * be notified when I make an improper entry. I should not have to restart from the beginning if I make a mistake
 * Have the results of the calculation clearly displayed and neatly formatted
 
 # UI Design
 ## Features
+### Scrollable Data Table
+A table displaying a list of all the chemicals available is shown at the center of the screen. The energy values
+are not displayed to keep the screen compact and to enhance readability. After all, the purpose of the app is to
+avoid having to work with the values directly. The user can scroll with a mouse or the arrow keys.
+![chemical data table](assets/screenshots/data_table.png)
+> Have the chemical data visible to me in the app.  
+> Scroll through the chemical data easily  
+> Navigate the sections of the app with keyboard or mouse.
 
+### Instruction Section
+There is a pane with a short description of how to use the app. It is easily visible and the content scrolls
+if the screen is too small.
+![instructions](assets/screenshots/instructions.png)
+> have instructions readily available so I know what to do  
+> Navigate the sections of the app with keyboard or mouse.  
+
+### Input Widgets
+The user can enter input to select reactants and products by entering data into these two form input widgets. When the user hits 
+Enter or clicks on the button with the mouse, the data is queried and the reactants and products are displayed in the 
+respective output window. There is a hint to the user as to how to enter input correctly. The reactants and products are labelled
+and color coded with different borders.
+![input widgets](assets/screenshots/input_widgets.png)
+> easily distinguish between products and reactants  
+> be given hints as to how to properly enter data  
+> Navigate the sections of the app with keyboard or mouse.
+### Output Panel
+The output panel features three boxes. Two are labelled for reactants and products. The third is for output.
+The borders of the reactant/product boxes match those of the input fields. If the user enters incorrect
+input, they are notfied in the third box.
+![output panel](assets/screenshots/output_panel.png)
+> easily distinguish between products and reactants  
+> be notified when I make an improper entry. I should not have to restart from the beginning if I make a mistake
+
+### Calculation Report
+When the user clicks on or presses enter on the Calculate button, the chemicals selected as products
+and reactants are used to perform a series of calculations using data in the dataframe. The results
+are formatted and outputted to the output panel.
+![calculation output](assets/screenshots/sample_calculation_output.png)
+> Have the results of the calculation clearly displayed and neatly formatted  
+> Navigate the sections of the app with keyboard or mouse.
+
+### Action Buttons
+There are two buttons. One labelled Calculate and the other Clear. When the user clicks on or presses enter
+on the Calculate button, the calculations are executed and the results displayed. When the user presses or 
+clicks on the Clear button, the input is cleared as is the the text boxes for reactants and products.
+![buttons](assets/screenshots/buttons.png)
+> clear my entries if I make a mistake  
+> Navigate the sections of the app with keyboard or mouse.
 ## Algorithm Design
 
 # Testing
