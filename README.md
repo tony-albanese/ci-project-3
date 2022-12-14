@@ -70,7 +70,10 @@ and color coded with different borders.
 ### Output Panel
 The output panel features three boxes. Two are labelled for reactants and products. The third is for output.
 The borders of the reactant/product boxes match those of the input fields. If the user enters incorrect
-input, they are notified in the third box.
+input, they are notified in the third box. These windows will automatically have scrollbars if content goes 
+offscreen. However, most chemical equations (especially those at an introductory level) rarely have more than two or
+three products and reactants. Thus, for the vast majority of use cases, the content a user would enter will fit
+on the screen.
 ![output panel](assets/screenshots/output_panel.png)
 > easily distinguish between products and reactants  
 > be notified when I make an improper entry. I should not have to restart from the beginning if I make a mistake
