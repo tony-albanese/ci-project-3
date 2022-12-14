@@ -4,9 +4,6 @@ layout: horizontal;
 height: 4fr;
 }
 
-UserInputArea {
-border: wide red;
-}
 
 Button {
 width: 1fr;
@@ -14,24 +11,39 @@ width: 1fr;
 
 DataWindow {
 width: 0.9fr;
-border: wide red;
+border: blank;
 }
-OutputWindow {
-width: 1fr;
-border: wide blue;
-}
+
 
 OutputPanel {
 width: 1.1fr;
-border: wide purple;
+
 }
 
 InstructionsWindow {
 width: 1fr;
-border: wide green;
+border: solid white;
 }
 
 #products, #reactants, #output {
-border: wide white;
 height: 1fr;
+}
+
+#products {
+border: solid green;
+}
+#product_input {
+border: solid green;
+}
+
+#reactants {
+border: solid blue;
+}
+
+#reactant_input {
+border: solid blue;
+}
+
+#output {
+border: solid orange;
 }
