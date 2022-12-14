@@ -1,14 +1,5 @@
-import pandas
-from rich.columns import Columns
-from rich.panel import Panel
-from rich.table import Table, Column
-from rich.text import Text
-from textual import events
 from textual.app import App, ComposeResult
-from textual.containers import Container
-from textual.reactive import reactive
-from textual.widgets import Button, Header, Footer, Static, Placeholder, Input, Label, TextLog
-import re
+from textual.widgets import Button, Footer, Static, Input, TextLog
 
 from chem_data.data_set import load_data_frame
 from chem_textual_ui.calculation_methods import calculate_free_energy, calculate_enthalpy_change, \
