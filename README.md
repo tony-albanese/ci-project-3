@@ -28,6 +28,16 @@ a data table (provided in the app) along with the coefficients from the balanced
 of dH, dG, and dS are calculated and displayed neatly.
 
 # User Stories
+As a User I want to 
+* Have the chemical data visible to me in the app.
+* Scroll through the chemical data easily
+* easiy enter chemical quantities and formulas
+* easily distinguish between products and reactants
+* clear my entries if I make a mistake
+* have instructions readily available so I know what to do
+* given hints as to how to properly enter data
+* be notified when I make an improper entry. I should not have to restart from the beginning if I make a mistake
+* Have the results of the calculation clearly displayed and neatly formatted
 
 # UI Design
 ## Features
@@ -35,6 +45,10 @@ of dH, dG, and dS are calculated and displayed neatly.
 ## Algorithms
 
 # Testing
+
+# Features left to implement
+
+# Unresolved bugs
 
 # Technology Used
 github
@@ -45,5 +59,7 @@ rich
 textualize
 pandas
 google sheets
+# Deployment
+# Version Control Strategy
 # Credits
 The chemical data was taken from the [International Baccalaureate](https://www.ibo.org/)'s Chemistry Data Booklet. 
