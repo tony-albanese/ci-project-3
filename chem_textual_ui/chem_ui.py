@@ -9,11 +9,8 @@ from textual.containers import Container
 from textual.reactive import reactive
 from textual.widgets import Button, Header, Footer, Static, Placeholder, Input, Label, TextLog
 import re
-from list_item import ListItem
-from list_view_class import ListView
-from data_set import *
 
-
+from chem_data.data_set import load_data_frame
 def calculate_enthalpy_change(data_frame, reactants: list, products: list):
     column_name = 'dH'
     sum_products = 0

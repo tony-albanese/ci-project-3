@@ -1,9 +1,7 @@
 import pandas.core.frame
 
-import data.data_set
-from data.data_set import *
+from chem_data.data_set import *
 from rich import print
-from rich.console import Console
 import re
 
 
