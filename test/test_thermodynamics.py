@@ -1,5 +1,4 @@
-from data.data_set import load_data_frame
-from repository.thermodynamics import *
+from chem_calculations.thermodynamics import *
 
 df = load_data_frame()
 

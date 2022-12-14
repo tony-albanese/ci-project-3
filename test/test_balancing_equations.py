@@ -1,4 +1,4 @@
-from repository.balancing_equations import *
+from chem_calculations.balancing_equations import *
 #Test method for entering formulas
 #Checks to see input is valid.
 def test_entering_formulas():
@@ -36,4 +36,4 @@ def test_stoichiometry():
         print(mole_result.message)
 
 
-test_stoichiometry()
+test_balance_equation()
