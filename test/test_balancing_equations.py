@@ -36,4 +36,4 @@ def test_stoichiometry():
         print(mole_result.message)
 
 
-test_stoichiometry()
+test_balance_equation()
