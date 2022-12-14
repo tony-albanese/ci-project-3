@@ -11,6 +11,12 @@ from textual.widgets import Button, Header, Footer, Static, Placeholder, Input, 
 import re
 
 from chem_data.data_set import load_data_frame
+from chem_textual_ui.calculation_methods import calculate_free_energy, calculate_enthalpy_change, \
+    calculate_entropy_change
+from chem_textual_ui.helper_methods import extract_chemical_formulas
+from chem_textual_ui.input_panel import UserInputArea
+from chem_textual_ui.main_panel import InstructionsWindow, DataWindow, OutputPanel
+
 
 class ChemApp(App):
     CSS_PATH = "chem_ui.css"

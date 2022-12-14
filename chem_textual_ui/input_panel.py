@@ -1,3 +1,6 @@
+from textual.app import ComposeResult
+from textual.widgets import Static, Button, Label, Input
+
 
 #Container for the input fields and two buttons
 class UserInputArea(Static):

@@ -1,3 +1,9 @@
+from rich.table import Table
+from rich.text import Text
+from textual import events
+from textual.app import ComposeResult
+from textual.widgets import Static, TextLog
+from chem_data.data_set import load_data_frame
 class DataWindow(Static):
     def compose(self) -> ComposeResult:
         print("DataWindow compose()")

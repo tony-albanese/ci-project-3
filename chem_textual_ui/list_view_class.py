@@ -8,10 +8,7 @@ from textual.geometry import clamp
 from textual.message import Message
 from textual.reactive import reactive
 from textual.widget import AwaitMount
-
 from list_item import ListItem
-
-
 class ListView(Vertical, can_focus=True, can_focus_children=False):
     """Displays a vertical list of `ListItem`s which can be highlighted
     and selected using the mouse or keyboard.
