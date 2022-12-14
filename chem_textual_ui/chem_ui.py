@@ -8,6 +8,8 @@ from chem_textual_ui.helper_methods import extract_chemical_formulas
 from chem_textual_ui.input_panel import UserInputArea
 from chem_textual_ui.main_panel import InstructionsWindow, DataWindow, OutputPanel
 
+import re
+
 
 class ChemApp(App):
     CSS_PATH = "chem_ui.css"
@@ -66,7 +68,7 @@ class ChemApp(App):
             return asTuple
         else:
             output_log = self.query_one('#output', TextLog)
-            output_log.write("Something went wrong.")
+            output_log.write("Invalid input.")
             return ("error", "bad input")
 
     def add_reactant(self, reactant):
