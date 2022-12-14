@@ -51,14 +51,25 @@ As a User I want to
 # Unresolved bugs
 
 # Technology Used
-github
-pycharm
++ [PyCharm IDE](https://www.jetbrains.com/pycharm/) An IDE designed specifically for Python developers. This is developed
+by JetBrains.
++ [Google Sheets](https://www.google.com/sheets/about/) This online spreadsheet was used to organize the chemical data
+into rows and columns that could easily be exported into CSV (comma separated value) text format which can be 
+easily loaded in Python.
 
 ## Python Libraries
-rich
-textualize
-pandas
-google sheets
+The Python community is quite large and as a result, there are numerous libraries (almost all freely available) that 
+help make a developer's life much easier. The following libraries were used in this project.
+
++ [Rich](https://rich.readthedocs.io/en/stable/introduction.html) is a Python library for displaying rich text
+in the console. The table for the chemical data was created with Rich.
++ [Textualize](https://www.textualize.io/) is a library to make beautiful console applications. The library features
+many built in widgets such as loggers, buttons, form inputs, etc that are ready to use with built in event handlers. 
+This library also has a layout and styling mechanism that is based on CSS that makes placing and styling the widgets
+relatively easy.
++ [pandas](https://pandas.pydata.org/) This python library is used by data scientists to display, query, and manipualte 
+large sets of data. The data in this project is accessed and queried as a pandas dataframe.
+
 # Deployment
 # Version Control Strategy
 # Credits
