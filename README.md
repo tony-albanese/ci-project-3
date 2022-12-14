@@ -80,7 +80,7 @@ help make a developer's life much easier. The following libraries were used in t
 + [Rich](https://rich.readthedocs.io/en/stable/introduction.html) is a Python library for displaying rich text
 in the console. The table for the chemical data was created with Rich.
 + [Textualize](https://www.textualize.io/) is a library to make beautiful console applications. The library features
-many built in widgets such as loggers, buttons, form inputs, etc that are ready to use with built in event handlers. 
+many built in widgets such as loggers, buttons, form inputs, etc that are ready to use with built-in event handlers. 
 This library also has a layout and styling mechanism that is based on CSS that makes placing and styling the widgets
 relatively easy.
 + [pandas](https://pandas.pydata.org/) This python library is used by data scientists to display, query, and manipualte 
@@ -88,5 +88,12 @@ large sets of data. The data in this project is accessed and queried as a pandas
 
 # Deployment
 # Version Control Strategy
+Git was employed in this project and the project code hosted on [GitHub](https://github.com/). I used branches in order to keep the main branch as "pure" as possible. The strategy was to have each branch dedicated to one feature or fix.  Once I was satisfied at a particular stage of a branch, I would navigate to GitHub, click on my repository, select the branch, and create a pull request. GitHub would then check if there are no conflicts and indicate if the branch could be merged into main. (One can choose which branch to merge into.) Once the pull request is created, I navigated down, wrote a comment, and clicked on the green Merge button and the commits would be merged into the main branch.
+I tried to keep commits as atomic as possible - focusing only on one element or feature at a time. This was not always the case, but most of the commits are relatively small changes.
+## VCS in PyCharm
+To make a commit, I clicked the Git menu item in PyCharm, followed by Commit. In the side panel, I selected the files I wished to commit.
+I then typed a commit message and pressed the Commit button in the lower left corner of the panel.
+To push to GitHub, I clicked on the Git menu item in PyCharm and then selected Push
+
 # Credits
 The chemical data was taken from the [International Baccalaureate](https://www.ibo.org/)'s Chemistry Data Booklet. 
