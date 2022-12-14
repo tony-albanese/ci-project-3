@@ -50,6 +50,12 @@ class InstructionsWindow(Static):
         instructions_window.write(text)
 
 class OutputPanel(Static):
+    def _on_mount(self, event: events.Mount) -> None:
+        reactants_log = self.query_one("#reactants", TextLog)
+        reactants_log.write("Reactants:")
+        products_log = self.query_one("#products", TextLog)
+        products_log.write("Products:")
+
     def compose(self) -> ComposeResult:
         yield TextLog(id = "reactants")
         yield TextLog(id="products")
