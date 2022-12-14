@@ -45,6 +45,19 @@ As a User I want to
 ## Algorithms
 
 # Testing
+Although unit testing is ideal, this app used many libraries which themselves have been tested. The methods that were
+developed to perform the chemical calculations are simple enough to be tested manually.
+## Manual testing
+| Test Description                         | Test                                                                                                                                                                                                                                | Result |
+|------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| Instructions are visible                 | When the app is run<br> Then the instructions are clearly visible in the left panel.                                                                                                                                                | PASS   |
+| Chemical data is readily available       | When the app is run <br> Then the chemical data table is loaded <br> The table is scrollable with mouse or keyboard <br> It is in the center panel                                                                                  | PASS   |
+| Products appear in the product panel     | When the user provides correct input in the product input field <br> The product appears in the product window.                                                                                                                     | PASS   |
+| Reactants appear in the product panel    | When the user provides correct input in the reactant input field <br> The reactant appears in the product window.                                                                                                                   | PASS   |
+| The Clear button functions               | When the user clicks on the Clear button <br>The products, reactants, and output window are cleared.                                                                                                                                | PASS   |
+| The Calculate button functions           | When the user enters valid data for products and reactants<br>and clicks on the Calculate button <br> The result of the calculation is displayed in the output window.                                                              | PASS   |
+| Invalid input is handled gracefully      | When the user enters anything not in the form of number,number <br> in either the product or reactant input field <br> then the user is notified with a message in the output panel. <br> The input is cleared from the input field | PASS   |
+| The input fields are cleared after entry | When the user enters input (valid or not) <br> and then presses enter  <br> The input is cleard from the input field.                                                                                                               | PASS   |
 
 # Features left to implement
 
