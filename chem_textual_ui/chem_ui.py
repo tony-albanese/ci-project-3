@@ -60,6 +60,8 @@ class ChemApp(App):
         self.reactants.clear()
         self.products.clear()
     def handle_input_response(self, user_input):
+        #If the input is invalid, the if statement will evaluate to false and the value_is_valid() method will
+        #Not execute.
         if(self.validate_reaction_entry(user_input) and self.value_is_valid(44, user_input)):
             pair = user_input.split(",")
             row = int(pair[0])
@@ -86,7 +88,7 @@ class ChemApp(App):
 
     def value_is_valid(self, max, entry):
         values = entry.split(",")
-        if int(values[0]) > max:
+        if int(values[0]) > max or values[0] < 0:
             return False
         else:
             return True
