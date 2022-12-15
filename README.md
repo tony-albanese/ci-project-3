@@ -3,11 +3,11 @@
 # Introduction
 Thermodynamic calculations are a part of every introductory high school chemistry class. Specifically, there are three 
 quantities students are expected to calculate:
-* Enthalpy Change ($\Delta H$ or dH) - This is the change in the total heat content of a system as reactants are converted into 
+* Enthalpy Change $\Delta H$ or dH - This is the change in the total heat content of a system as reactants are converted into 
 products in a chemical reaction.
-* Free Energy Change ($\Delta G$ or dG) - Also called the Gibbs free energy change, this is a measure of the amount of useful work 
+* Free Energy Change $\Delta G$ or dG - Also called the Gibbs free energy change, this is a measure of the amount of useful work 
 either absorbed or released from the system during a chemical reaction.
-* Entropy ($\Delta S$ or dS) - This is a measure of the change in entropy in a chemical reaction as products are formed from reactions. Entropy is 
+* Entropy $\Delta S$ or dS - This is a measure of the change in entropy in a chemical reaction as products are formed from reactions. Entropy is 
 quantity that measures how much useful energy is unavailable for useful work (per unit temperature). 
 
 The process by which the student calculates these quantities involves the following general steps:
