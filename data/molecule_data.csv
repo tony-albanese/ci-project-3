@@ -1,4 +1,17 @@
 name,formula,state,dH,dG,dS
+carbon,C,s,0,0,5.69
+hydrogen,H2,g,0,0,144.6
+nitrogen,N2,g,0,0,51.1
+oxygen,O2,g,0,0,204.8
+sulfur,S,s,0,0,31.8
+phoshorus,P,s,0,0,22.7
+chlorine,Cl2,g,0,0,223
+bromine,Br2,l,0,0,152
+bromine,Br2,s,30.8,3.2,245
+fluorine,F2,g,0,0,202
+sodium,Na,s,0,0,51
+potassium,K,s,0,0,64.12
+lithium,Li,s,0,0,29
 methane,CH4,g,-74,-50,186
 ethane,C2H6,g,-84,-32,230
 propane,C3H8,g,-105,-24,270

@@ -64,7 +64,7 @@ class ChemApp(App):
         user_input = user_input.replace(' ', '')
         #If the input is invalid, the if statement will evaluate to false and the value_is_valid() method will
         #Not execute.
-        if(self.validate_reaction_entry(user_input) and self.value_is_valid(44, user_input)):
+        if(self.validate_reaction_entry(user_input) and self.value_is_valid(57, user_input)):
             pair = user_input.split(",")
             row = int(pair[0])
             coefficient = int(pair[1])
