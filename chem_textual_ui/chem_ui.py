@@ -8,6 +8,8 @@ from chem_textual_ui.helper_methods import extract_chemical_formulas
 from chem_textual_ui.input_panel import UserInputArea
 from chem_textual_ui.main_panel import InstructionsWindow, DataWindow, OutputPanel
 
+import re
+
 
 class ChemApp(App):
     CSS_PATH = "chem_ui.css"
@@ -58,7 +60,11 @@ class ChemApp(App):
         self.reactants.clear()
         self.products.clear()
     def handle_input_response(self, user_input):
-        if(self.validate_reaction_entry(user_input) and self.value_is_valid(44, user_input)):
+        #first remove whitespace from the input
+        user_input = user_input.replace(' ', '')
+        #If the input is invalid, the if statement will evaluate to false and the value_is_valid() method will
+        #Not execute.
+        if(self.validate_reaction_entry(user_input) and self.value_is_valid(57, user_input)):
             pair = user_input.split(",")
             row = int(pair[0])
             coefficient = int(pair[1])
@@ -66,7 +72,7 @@ class ChemApp(App):
             return asTuple
         else:
             output_log = self.query_one('#output', TextLog)
-            output_log.write("Something went wrong.")
+            output_log.write("Invalid input.")
             return ("error", "bad input")
 
     def add_reactant(self, reactant):
@@ -84,7 +90,7 @@ class ChemApp(App):
 
     def value_is_valid(self, max, entry):
         values = entry.split(",")
-        if int(values[0]) > max:
+        if int(values[0]) > max or int(values[0]) < 0:
             return False
         else:
             return True
