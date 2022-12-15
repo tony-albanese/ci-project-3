@@ -256,7 +256,7 @@ developed to perform the chemical calculations are simple enough to be tested ma
 | The results are neatly formatted               | When the results are displayed in the output panel <br> The selected products are printed on one new line. <br> The selected reactants are printed on one new line.                                                                 | PASS   |
 | The results are neatly formatted               | When the results are displayed in the output panel <br> The result of the calculation for dH, dG, and dS are shown.<br>Each is on a separate line.                                                                                  | PASS   |
 | The results are neatly formatted               | When the results are displayed in the output panel <br> The units for each quantity of dH, dG, and dS are shown.                                                                                                                    | PASS   |
-| The calculations are accurate                  |||
+| The calculations are accurate                  | When the user enters valid input <br> and presses the Calculate button <br> the output value for dH, dG, and dS are correct                                                                                                         | PASS   |
 # Features left to implement
 
 # Unresolved bugs
