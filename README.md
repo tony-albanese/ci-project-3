@@ -122,7 +122,7 @@ which contains data about the object and data submitted.
 ```
 #Determine which input object was submitted
    GET message.id value
-      IF message.id is reactant_input
+      IF input.id is reactant_input
          check if input is valid
          if valid
             retrieve data from dataframe
@@ -130,7 +130,7 @@ which contains data about the object and data submitted.
             print the value to the reactant output window
          if not valid
             print error message to output log
-      IF message.id is product_input
+      IF input.id is product_input
          check if input is valid
          if valid
             retrieve data from dataframe
@@ -164,9 +164,79 @@ index = split_string_array[0] #The first value is supposed to be the index
    else
       return TRUE
 ```
-### Data Query
+### Querying Data
+The logic for retrieving data from a dataframe object is simple. One simply calls the _get_value() method on
+the dataframe object and pass in the index of the row and name of the column as a string. 
 ### Event Handling
+The Textual libraries built in widgets have a set of event handlers to respond to user events such as clicks, input
+submission, and text changes. This is the logic that is executed by the library's on_button_pressed() method which
+is called any time a user clicks on a button object with the mouse or presses the Enter key while a button object
+has focus. The method is passed a Button.Pressed object which encapsulates information about the button that was clicked.
+```
+#Get the id value from the clicked button
+if button.id == 'submit button'
+   execute chemical calculations
+if button.id == 'clear button'
+   reset the value of products list
+   reset the value of reactants list
+   clear the reacts window
+   clear the prodcuts window
+
+```
 ### Calculation of Quantities
+This is the key algorithm in the app as it is responsible for producing the output that the user needs. The
+general steps in the calculation of quantities and the production of hte output are as follows:
+1. calculate the dH, dG, and dS
+2. retrieve the formulas for the products
+3. retrieve the formulas for the reactants
+4. output the values
+
+This is the algorithm for calculating dH, dG, and dS. The logic is the same for each. The method accepts a dataframe,
+a list of products, and a list of reactants as input. The only thing that changes is the name of column from which
+we want to retrieve data.
+```
+#We want to retrieve values from the dH column.
+column = 'dH' 
+sum_products = 0
+sum_reactants = 0
+   #loop over the reactants
+   for each reactant in reactants:
+      retrieve its energy value from dataframe column
+      add that value to the sum_reactants
+   
+   #loop over products
+   for each product in products
+      retrieve its energy value from the dataframe column
+      add that value to sum_products
+   
+   return sum_products - sum_reactants
+```
+
+This is the logic for producing the output:
+```
+calculate dH
+calculate dG
+calculate dS
+
+product_formula_list
+reactant_formula_list
+
+#Retrieve the formulas for the reactants
+   #Loop over the reactants list
+   for each reactant in reactants list
+      retrieve formula from dataframe using index in reactant_formula_list
+      store that formula in a list
+   #Loop over the products list
+      rerieve fromula from dataframe using index in product
+      store that formula in a product_formula_list
+
+   write reactant_formula_list to output window
+   write product_formula_list to output window
+   
+   write dH as formatted string with units to output window
+   write dG as formatted string with units to output window
+   write dS as formatted string with units to output window
+```
 # Testing
 Although unit testing is ideal, this app used many libraries which themselves have been tested. The methods that were
 developed to perform the chemical calculations are simple enough to be tested manually.
@@ -180,7 +250,7 @@ developed to perform the chemical calculations are simple enough to be tested ma
 | The Clear button functions                     | When the user clicks on the Clear button <br>The products, reactants, and output window are cleared.                                                                                                                                | PASS   |
 | The Calculate button functions                 | When the user enters valid data for products and reactants<br>and clicks on the Calculate button <br> The result of the calculation is displayed in the output window.                                                              | PASS   |
 | Invalid input is handled gracefully            | When the user enters anything not in the form of number,number <br> in either the product or reactant input field <br> then the user is notified with a message in the output panel. <br> The input is cleared from the input field | PASS   |
-| Invalid index values are gracefully handled    |||
+| Invalid index values are gracefully handled    | When the user enters a negative number for the index <br> then an error message is displayed in the output <br> and the input is cleared                                                                                            | PASS   |
 | The input fields are cleared after entry       | When the user enters input (valid or not) <br> and then presses enter  <br> The input is cleared from the input field.                                                                                                              | PASS   |
 | The results are displayed in the output window | When the user enters valid input <br> and presses the calculate button  <br> The results of the calculation are showed in the output window.                                                                                        | PASS   |
 | The results are neatly formatted               | When the results are displayed in the output panel <br> The selected products are printed on one new line. <br> The selected reactants are printed on one new line.                                                                 | PASS   |
