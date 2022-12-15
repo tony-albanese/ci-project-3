@@ -94,7 +94,79 @@ clicks on the Clear button, the input is cleared as is the text boxes for reacta
 > clear my entries if I make a mistake  
 > Navigate the sections of the app with keyboard or mouse.
 ## Algorithm Design
+This sections outlines the more important algorithms in the app using pseudocode. Trivial algorithms or those
+achieved mainly through libraries are not mentioned.
+### Creation of Data Table
+This is the algorithm design for the creation of the datatable. It involves loading a dataframe (which is done using
+the pandas library), creating a Table object from the Rich library, looping over the rows in the dataframe to add
+the data from the rows to the Table. That table object is then written to the correct TextLog in the UI.
+```
+GET reference to dataframe
+INITIALIZE Table object
+   INITALIZE Column for Index, Name, Formula, State
+LOOP over each row in the dataframe
+   FOR each row in the dataframe
+      retrieve index
+      retrieve name
+      retrieve formula
+      retrieve state
+      add these values to row in Table object
+GET reference to TextLog widget
+on widget mount to window:
+   print table object to log
+```
+### Handling and Validation of User Input
+This logic is handled by the _on_input_submitted() method which is part of the Textual library. This method
+is called whenever the user hits the enter key on an Input object. The method is passed an Input.Submitted object
+which contains data about the object and data submitted.
+```
+#Determine which input object was submitted
+   GET message.id value
+      IF message.id is reactant_input
+         check if input is valid
+         if valid
+            retrieve data from dataframe
+            add it to the list of reactants
+            print the value to the reactant output window
+         if not valid
+            print error message to output log
+      IF message.id is product_input
+         check if input is valid
+         if valid
+            retrieve data from dataframe
+            add it to the list of products
+            print the value to the product output window
+         if not valid
+            print error message to output log
+```
+This is the logic employed to determine whether the input is valid. Two things need to be checked, the first
+is whether the input is in the form of integer,integer. The second is whether the first integer, which 
+is the index of the chemical is within range. In other words, if the user enters -5 for an index or 65 (which does not
+exist), the input should be flagged as invalid. The method accepts the user_input as a parameter.
+```
+#Method to determine if user input matches pattenrn integer,integer using regex
 
+initialize regex pattern [0-9]+,[1-9]+ #any number of digits,any number of digits
+compare user input to regex expression
+   if match
+      return TRUE
+   else 
+      return FALSE
+```
+This is the logic to determine if the input index is within range. It will only be called if the input pattern
+matches the requirment of being in the form integer,integer.
+```
+#split the user input into an array of two
+split_string_aray = user_input.split(",")
+index = split_string_array[0] #The first value is supposed to be the index
+   if index < 0 OR index > dataframe size
+      return FALSE
+   else
+      return TRUE
+```
+### Data Query
+### Event Handling
+### Calculation of Quantities
 # Testing
 Although unit testing is ideal, this app used many libraries which themselves have been tested. The methods that were
 developed to perform the chemical calculations are simple enough to be tested manually.
@@ -108,11 +180,13 @@ developed to perform the chemical calculations are simple enough to be tested ma
 | The Clear button functions                     | When the user clicks on the Clear button <br>The products, reactants, and output window are cleared.                                                                                                                                | PASS   |
 | The Calculate button functions                 | When the user enters valid data for products and reactants<br>and clicks on the Calculate button <br> The result of the calculation is displayed in the output window.                                                              | PASS   |
 | Invalid input is handled gracefully            | When the user enters anything not in the form of number,number <br> in either the product or reactant input field <br> then the user is notified with a message in the output panel. <br> The input is cleared from the input field | PASS   |
+| Invalid index values are gracefully handled    |||
 | The input fields are cleared after entry       | When the user enters input (valid or not) <br> and then presses enter  <br> The input is cleared from the input field.                                                                                                              | PASS   |
 | The results are displayed in the output window | When the user enters valid input <br> and presses the calculate button  <br> The results of the calculation are showed in the output window.                                                                                        | PASS   |
 | The results are neatly formatted               | When the results are displayed in the output panel <br> The selected products are printed on one new line. <br> The selected reactants are printed on one new line.                                                                 | PASS   |
 | The results are neatly formatted               | When the results are displayed in the output panel <br> The result of the calculation for dH, dG, and dS are shown.<br>Each is on a separate line.                                                                                  | PASS   |
 | The results are neatly formatted               | When the results are displayed in the output panel <br> The units for each quantity of dH, dG, and dS are shown.                                                                                                                    | PASS   |
+| The calculations are accurate                  |||
 # Features left to implement
 
 # Unresolved bugs
@@ -138,6 +212,8 @@ relatively easy.
 large sets of data. The data in this project is accessed and queried as a pandas dataframe.
 
 # Deployment
+## Project Creation
+## Heroku
 # Version Control Strategy
 Git was employed in this project and the project code hosted on [GitHub](https://github.com/). I used branches in order to keep the main branch as "pure" as possible. The strategy was to have each branch dedicated to one feature or fix.  Once I was satisfied at a particular stage of a branch, I would navigate to GitHub, click on my repository, select the branch, and create a pull request. GitHub would then check if there are no conflicts and indicate if the branch could be merged into main. (One can choose which branch to merge into.) Once the pull request is created, I navigated down, wrote a comment, and clicked on the green Merge button and the commits would be merged into the main branch.
 I tried to keep commits as atomic as possible - focusing only on one element or feature at a time. This was not always the case, but most of the commits are relatively small changes.
