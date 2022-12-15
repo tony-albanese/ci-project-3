@@ -34,6 +34,7 @@ As a User I want to
 * Scroll through the chemical data easily
 * easily enter chemical quantities and formulas
 * easily distinguish between products and reactants
+* be aware of which chemicals I have selected
 * clear my entries if I make a mistake
 * have instructions readily available so I know what to do
 * be given hints as to how to properly enter data
@@ -65,7 +66,7 @@ respective output window. There is a hint to the user as to how to enter input c
 and color coded with different borders.
 ![input widgets](assets/screenshots/input_widgets.png)
 > easily distinguish between products and reactants  
-> be given hints as to how to properly enter data  
+> be given hints as to how to properly enter data
 > Navigate the sections of the app with keyboard or mouse.
 ### Output Panel
 The output panel features three boxes. Two are labelled for reactants and products. The third is for output.
@@ -76,14 +77,18 @@ three products and reactants. Thus, for the vast majority of use cases, the cont
 on the screen.
 ![output panel](assets/screenshots/output_panel.png)
 > easily distinguish between products and reactants  
+> be aware of which chemicals I have selected  
 > be notified when I make an improper entry. I should not have to restart from the beginning if I make a mistake
 
 ### Calculation Report
 When the user clicks on or presses enter on the Calculate button, the chemicals selected as products
 and reactants are used to perform a series of calculations using data in the dataframe. The results
-are formatted and outputted to the output panel.
+are formatted and outputted to the output panel. In addition to the output values, the user is given 
+a list of the reactants and products used. This is to help them ensure that the calculations are based on
+the values they entered.
 ![calculation output](assets/screenshots/sample_calculation_output.png)
 > Have the results of the calculation clearly displayed and neatly formatted  
+> be aware of which chemicals I have selected  
 > Navigate the sections of the app with keyboard or mouse.
 
 ### Action Buttons
