@@ -289,6 +289,13 @@ large sets of data. The data in this project is accessed and queried as a pandas
 
 # Deployment
 ## Project Creation
+* The project was started by navigating to the [template](https://github.com/Code-Institute-Org/gitpod-full-template) and clicking 'Use this template'. Under Repository name I input ci-project-3. I then navigated to the new [repository for project 3](https://github.com/tony-albanese/ci-project-3). 
+* I then cloned the repository into PyCharm by doing the following:
+  * Open PyCharm
+  * Click on the "Get from VCS" button
+  * Copied the [clone url](https://github.com/tony-albanese/ci-project-3.git) for the repository
+  * Selected an empty project folder
+  * Clicked on the Clone button at the bottom of the dialog
 ## Heroku
 # Version Control Strategy
 Git was employed in this project and the project code hosted on [GitHub](https://github.com/). I used branches in order to keep the main branch as "pure" as possible. The strategy was to have each branch dedicated to one feature or fix.  Once I was satisfied at a particular stage of a branch, I would navigate to GitHub, click on my repository, select the branch, and create a pull request. GitHub would then check if there are no conflicts and indicate if the branch could be merged into main. (One can choose which branch to merge into.) Once the pull request is created, I navigated down, wrote a comment, and clicked on the green Merge button and the commits would be merged into the main branch.
