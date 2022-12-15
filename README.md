@@ -19,6 +19,8 @@ reactants and products.
 4. The energies the reactants are added. The energies of the products are added.
 5. The change is determined by subtracting reactants from the products.
 $$\Delta X = \Sigma E_{products} - \Sigma E_{reactants}$$
+where $\Delta X$ is the change in energy quantity and $\Sigma E_{products}$ is the sum of the energies of the products
+and $\Sigma E_{reactants}$ is the sum of the energies of the reactants.
 
 This process is tedious and error-prone since students often misread data in the table, or make calculator mistakes as
 they perform sums, and often confuse products with reactants.
