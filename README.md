@@ -18,8 +18,7 @@ in the equation by the value of the thermodynamic quantity found in the table. T
 reactants and products.
 4. The energies the reactants are added. The energies of the products are added.
 5. The change is determined by subtracting reactants from the products.
-   - sum of products - sum of reactants [//]:#(Add LaTex formula) 
-   - $$\sqrt{x}$$
+$$\Delta X = \Sigma E_{products} - \Sigma E_{reactants}$$
 
 This process is tedious and error-prone since students often misread data in the table, or make calculator mistakes as
 they perform sums, and often confuse products with reactants.
