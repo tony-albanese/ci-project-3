@@ -258,8 +258,14 @@ developed to perform the chemical calculations are simple enough to be tested ma
 | The results are neatly formatted               | When the results are displayed in the output panel <br> The units for each quantity of dH, dG, and dS are shown.                                                                                                                    | PASS   |
 | The calculations are accurate                  | When the user enters valid input <br> and presses the Calculate button <br> the output value for dH, dG, and dS are correct                                                                                                         | PASS   |
 # Features left to implement
-
-# Unresolved bugs
+The following features would be a good additions to the app:
++ Validation of chemical input. As of now, the app calculates the quantities based on what the user enters. However, if 
+the user enters a set of products and reactants that do not constitute a valid chemical reaction, the program will perform these calculations
+regardless even though the values will not have physical meaning. This is similar to the student incorrectly entering digits and operations on
+a calculator - the machine simply performs the calculations based on the input. The user must evaluate the reasonableness of the output themselves.
++ Entering data directly from the table. It would be nice if the user could simply highlight the chemical in the table and either
+by hitting enter or some other key add it to the list of products or reactants. The Table object in the Rich library does have
+responsive elements. However, the requirement of quantities in addition to the chemical requires a non-trivial handling of user keyboard input.
 
 # Technology Used
 + [PyCharm IDE](https://www.jetbrains.com/pycharm/) An IDE designed specifically for Python developers. This is developed
