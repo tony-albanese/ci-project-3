@@ -295,6 +295,14 @@ relatively easy.
 large sets of data. The data in this project is accessed and queried as a pandas dataframe.
 
 # Deployment
++ Create a repository dedicated for deployment using the [python project template](https://github.com/Code-Institute-Org/python-essentials-template) provided by 
+CodeInstitute.
++ Create workspace in GitPod from new repository. 
++ Update requirements.txt
+```
+pip3 freeze > requirements.txt
+```
+
 ## Project Creation
 * The project was started by navigating to the [template](https://github.com/Code-Institute-Org/gitpod-full-template) and clicking 'Use this template'. Under Repository name I input ci-project-3. I then navigated to the new [repository for project 3](https://github.com/tony-albanese/ci-project-3). 
 * I then cloned the repository into PyCharm by doing the following:
