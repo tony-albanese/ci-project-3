@@ -18,7 +18,12 @@ class TerminalChemApp():
         instructions = '''
         Enter a formula like this: NH3 
         To see the data, enter "d" and hit Enter. 
-        To exit, enter "e" and hit Enter.
+        To exit, enter "q" and hit Enter.
+        To see a list of your products, enter "p" and hit Enter.
+        To see a list of reactants, enter "r" and hit Enter.
+        To see these instructions, enter "i" and hit Enter.
+        To perform the calculations, enter "c" and hit Enter.
+        To start over, type "clear" and hit Enter.
         '''
         return instructions
 
@@ -71,11 +76,16 @@ class TerminalChemApp():
         print(self.get_instructions())
 
         while True:
-            entry = input("Enter chemical formula: \n") #Don't forget backspace before entry.
-            if entry == 'e':
+            #TODO Implement see chemicals.
+            entry = input("Command: \n") #Don't forget backspace before entry.
+            if entry == 'q':
                 break
             elif entry == 'd':
                 self.display_data()
+            elif entry == 'i':
+                print(self.get_instructions())
+            elif entry == 'c':
+                self.calculate()
             else:
                 self.handle_user_input(entry)
 
@@ -83,6 +93,7 @@ class TerminalChemApp():
     def clear_chemical_lists(self):
         self.products.clear()
         self.reactants.clear()
+        print("Choices cleared.")
 
     def add_chemical_to_list(self,  i: int):
         print("Enter the coeffcient from the chemical equation.")
@@ -115,3 +126,6 @@ class TerminalChemApp():
                         print(f"reactants: {self.reactants}")
                         choice_made = True
                 entry_processed = True
+
+    def calculate(self):
+        pass
