@@ -106,7 +106,12 @@ class TerminalChemApp():
                     choice = input("(p)roduct or (r)eactant?\n")
 
                     if choice == 'p':
-                        choice_made = True
                         self.products.append((i, coefficient))
                         print(f"products: {self.products}")
+                        choice_made = True
 
+                    elif choice == 'r':
+                        self.reactants.append((i, coefficient))
+                        print(f"reactants: {self.reactants}")
+                        choice_made = True
+                entry_processed = True
