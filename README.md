@@ -175,7 +175,56 @@ clicks on the Clear button, the input is cleared as is the text boxes for reacta
 ## Algorithm Design
 This sections outlines the more important algorithms in the app using pseudocode. Trivial algorithms or those
 achieved mainly through libraries are not mentioned.
-### Creation of Data Table
+
+### Main Program Flow
+The program's execution is essentially an infinite while loop that polls the user for input. This is the outline
+of the run loop in pseudocode.
+```
+load app
+dislay welcome message
+display instructions
+
+while True:
+  get user input
+  if q
+    break 
+  if c
+    perform calculations
+  if i
+    print instructions
+  if 'clear'
+    clear data
+  if p
+    print products
+  if r
+    print reactants
+  if d
+    display data
+  else
+    send input for further handling
+```
+### Scrolling Data Table (Heroku App)
+Both versions of the app display the same data. The textual version has a table widget
+to display the data. That is not possible on the emulated console. Therefore, the user must be displayed data
+in small pages of five rows to prevent having to scroll (since the scroll behavior of the emulated terminal is
+unknown). Also, the emulated terminal is very small and cannot be changed. The user should not be overwhelmed with
+too much data on the screen at once. Here is the general algorithm for displaying the table in pages.
+```
+get reference to dataframe
+  i = 0
+  while i < dataframe.length
+      loop i to i + 5 
+        print the ith row of the dataframe
+        i++
+      get input
+      if blank 
+        break  
+```   
+### Searching Data Table (Heroku App)
+
+### Validation of User Input (Heroku App)
+
+### Creation of Data Table (Textual App)
 This is the algorithm design for the creation of the datatable. It involves loading a dataframe (which is done using
 the pandas library), creating a Table object from the Rich library, looping over the rows in the dataframe to add
 the data from the rows to the Table. That table object is then written to the correct TextLog in the UI.
@@ -194,7 +243,7 @@ GET reference to TextLog widget
 on widget mount to window:
    print table object to log
 ```
-### Handling and Validation of User Input
+### Handling and Validation of User Input (Textual App)
 This logic is handled by the _on_input_submitted() method which is part of the Textual library. This method
 is called whenever the user hits the enter key on an Input object. The method is passed an Input.Submitted object
 which contains data about the object and data submitted.
@@ -246,7 +295,7 @@ index = split_string_array[0] #The first value is supposed to be the index
 ### Querying Data
 The logic for retrieving data from a dataframe object is simple. One simply calls the _get_value() method on
 the dataframe object and pass in the index of the row and name of the column as a string. 
-### Event Handling
+### Event Handling (Textual App)
 The Textual libraries built in widgets have a set of event handlers to respond to user events such as clicks, input
 submission, and text changes. This is the logic that is executed by the library's on_button_pressed() method which
 is called any time a user clicks on a button object with the mouse or presses the Enter key while a button object
@@ -262,7 +311,7 @@ if button.id == 'clear button'
    clear the prodcuts window
 
 ```
-### Calculation of Quantities
+### Calculation of Quantities (Both Textual and Heroku Versions)
 This is the key algorithm in the app as it is responsible for producing the output that the user needs. The
 general steps in the calculation of quantities and the production of hte output are as follows:
 1. calculate the dH, dG, and dS
