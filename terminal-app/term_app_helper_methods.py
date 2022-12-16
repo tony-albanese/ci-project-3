@@ -154,10 +154,10 @@ def calculate_entropy_change(data_frame: pandas.core.frame.DataFrame, reactants:
     print(sum_reactants)
     return entropy_change
 
-def generate_thermodynamic_calculations():
-    df = load_data_frame()
-    reactants = get_reactants()
-    products = get_products()
+def generate_thermodynamic_calculations(df:pandas.core.frame.DataFrame, reactants: list, products: list):
+    #df = load_data_frame()
+    #reactants = get_reactants()
+    #products = get_products()
 
     dH = calculate_enthalpy_change(df, reactants, products)
     dG = calculate_free_energy(df, reactants, products)
@@ -173,7 +173,6 @@ def generate_thermodynamic_calculations():
     The free energy change (dG) is: {dG} kJ per mol
     The entropy change (dS) is: {dS} kJ per mol per Kelvin
     """
-    print(report)
     return report
 
 def extract_chemical_formulas(df: pandas.core.frame.DataFrame, chemical_list: list):
