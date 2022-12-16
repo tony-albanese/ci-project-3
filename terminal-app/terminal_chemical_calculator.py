@@ -49,11 +49,11 @@ class TerminalChemApp():
             choice_is_made = False
             while not choice_is_made:
                 index = input("Which do you want? Enter the index: ")
-                if index.isdigit():
+                if not index.isdigit():
+                    print("That is not a valid entry.")
+                else:
                     choice_is_made = True
                     print(f"You chose {index}")
-                else:
-                    print("That is not a valid entry.")
         else:
             print("Found something!")
             self.print_data_frame(result)
