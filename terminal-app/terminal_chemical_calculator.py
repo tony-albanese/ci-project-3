@@ -85,4 +85,28 @@ class TerminalChemApp():
         self.reactants.clear()
 
     def add_chemical_to_list(self,  i: int):
-        print(f"Will add data at index {i}.")
+        print("Enter the coeffcient from the chemical equation.")
+        print("Enter 0 or just hit enter to not use this chemical")
+        coefficient_string = str(input("Coefficient:\n"))
+        coefficient_string.strip()
+        entry_processed = False
+        while not entry_processed:
+            if coefficient_string == '':
+                entry_processed = True
+            elif coefficient_string == '0':
+                entry_processed = True
+            elif not coefficient_string.isdigit():
+                print("That was not a valid response. Try again.")
+            else:
+                i = int(i)
+                coefficient = int(coefficient_string)
+                print("Enter p to add to products. Enter r to add to reactants.")
+                choice_made = False
+                while not choice_made:
+                    choice = input("(p)roduct or (r)eactant?\n")
+
+                    if choice == 'p':
+                        choice_made = True
+                        self.products.append((i, coefficient))
+                        print(f"products: {self.products}")
+
