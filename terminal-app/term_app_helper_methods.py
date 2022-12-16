@@ -183,10 +183,11 @@ def extract_chemical_formulas(df: pandas.core.frame.DataFrame, chemical_list: li
     col_formula = 'formula'
     for chemical in chemical_list:
         row = chemical[0]
+        coefficient = chemical[1]
         name = df._get_value(row, col_name)
         formula = df._get_value(row, col_formula)
         state = df._get_value(row, col_state)
-        full_formula = f'{formula} {name} {state}'
+        full_formula = f'{coefficient} of {formula} {name} {state}'
         product_formulas.append(full_formula)
 
     return product_formulas
