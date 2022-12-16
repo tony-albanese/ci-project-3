@@ -442,11 +442,28 @@ reactant_formula_list
    write dS as formatted string with units to output window
 ```
 
-
 # Testing
 Although unit testing is ideal, this app used many libraries which themselves have been tested. The methods that were
 developed to perform the chemical calculations are simple enough to be tested manually.
-## Manual testing
+## Manual Testing Heroku App
+| Test Description              | Test                                                                                                                        | Result |
+|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------|--------|
+| instructions are visible      | When the app is loaded <br> the instructions are visible                                                                    | PASSS  |
+| instructions are visible      | When the user enters i on the command prompt <br> the instructions are printed                                              | PASS   |
+| quit function                 | When the user presses q on the command prompt <br> the app quits                                                            | PASS   |
+| display data                  | When the user presses d on the command primpt <br> the data table is displayed <br> five rows are displayed                 | PASS   |
+| next set of data displayed    | When the user presses  <br> the next five rows of data are displayed. <br> if they hit enter, they return to command prompt | PASS   |
+| user can see selections       | When user presses p on command prompt <bre> list of products is shown.                                                      | PASS   |
+| user can see selections       | When user presses r on command prompt <br> list of reactants is shown.                                                      | PASS   |
+| user can clear selections     | When user enters clear on command prompt <br> and then prints products or reactants <br> empty list is displayed            | PASS   |
+| user gets calculation report  | When user enters c on command prompt <b> caluculation report is displayed with formatting <br> and selected chemicals       | PASS   |
+| no calculations on empty list | If reactant or product list is empty <br> no calculations are performed <br> user is notified                               | PASS   |
+| invalid input is handled      | When the user enters invalid coefficient <br> the user is notified and asked again                                          | PASS   |
+| invalid input is handled      | When the user enters non existent formula <br> the user is notified and returned to command prompt                          | PASS   |
+| invalid input is handled      | When the user enters invalid index when more than one match is found <br> the user is notified and asked again              | PASS   |
+| invalid input is handled      | When the user enters invalid choice for product or reactant <br> the user is notified and asked again                        | PASS   |
+
+## Manual Testing Textual App
 | Test Description                               | Test                                                                                                                                                                                                                                | Result |
 |------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
 | Instructions are visible                       | When the app is run<br> Then the instructions are clearly visible in the left panel.                                                                                                                                                | PASS   |
