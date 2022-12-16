@@ -511,14 +511,6 @@ relatively easy.
 large sets of data. The data in this project is accessed and queried as a pandas dataframe.
 
 # Deployment
-+ Create a repository dedicated for deployment using the [python project template](https://github.com/Code-Institute-Org/python-essentials-template) provided by 
-CodeInstitute.
-+ Create workspace in GitPod from new repository. 
-+ Update requirements.txt
-```
-pip3 freeze > requirements.txt
-```
-
 ## Project Creation
 * The project was started by navigating to the [template](https://github.com/Code-Institute-Org/gitpod-full-template) and clicking 'Use this template'. Under Repository name I input ci-project-3. I then navigated to the new [repository for project 3](https://github.com/tony-albanese/ci-project-3). 
 * I then cloned the repository into PyCharm by doing the following:
@@ -527,7 +519,38 @@ pip3 freeze > requirements.txt
   * Copied the [clone url](https://github.com/tony-albanese/ci-project-3.git) for the repository
   * Selected an empty project folder
   * Clicked on the Clone button at the bottom of the dialog
-## Heroku
+
+## Project Structure
+
+## Heroku Preparation
+To prepare the app for Heroku deployment, I created a second repository using a different template that Code Institute created
+for Python Essentials. 
+### GitHub Preparation
++ Create a repository dedicated for deployment using the [python project template](https://github.com/Code-Institute-Org/python-essentials-template) provided by 
+CodeInstitute. This particular repository was named [ci-project-3-deployment](https://github.com/tony-albanese/ci-project-3-deployment) and is only for deployment to heroku
++ Create workspace in GitPod from new repository.
++ Stored the requirements of the python environment in the [repository for project 3](https://github.com/tony-albanese/ci-project-3).
+```
+pip3 freeze > requirements.txt
+```
++ copied over the requirements.txt to the deployment repository
++ Updated the python enviroment in the deployment repository
+```
+pip3 install -r requirements.txt
+```
++ copied the files for the purely terminal version of the app to the root directory of this repository
+### Heroku Deployment
++ Created Heroku account
++ From the dashboard, clicked on New -> Create New App
++ Gave the app the name thermodynamic-calculator
++ Clicked on Settings -> Add BuildPack
++ Added Python BuildPack and clicked save
++ Added Node.js BuildPack and clicked save
++ Clicked on Deploy tab
++ Under manual deploy, selected Deploy a GitHub Branch
++ Chose branch terminal-settings
++ Clicked on Deploy Branch
++ Retrieved URL for web app when build was finished 
 # Version Control Strategy
 Git was employed in this project and the project code hosted on [GitHub](https://github.com/). I used branches in order to keep the main branch as "pure" as possible. The strategy was to have each branch dedicated to one feature or fix.  Once I was satisfied at a particular stage of a branch, I would navigate to GitHub, click on my repository, select the branch, and create a pull request. GitHub would then check if there are no conflicts and indicate if the branch could be merged into main. (One can choose which branch to merge into.) Once the pull request is created, I navigated down, wrote a comment, and clicked on the green Merge button and the commits would be merged into the main branch.
 I tried to keep commits as atomic as possible - focusing only on one element or feature at a time. This was not always the case, but most of the commits are relatively small changes.
