@@ -127,12 +127,12 @@ class TerminalChemApp():
 
                     if choice == 'p':
                         self.products.append((i, coefficient))
-                        print(f"products: {self.products}")
+                        print("Successfully added to products.")
                         choice_made = True
 
                     elif choice == 'r':
                         self.reactants.append((i, coefficient))
-                        print(f"reactants: {self.reactants}")
+                        print("Successully added to reactants.")
                         choice_made = True
                 entry_processed = True
 
