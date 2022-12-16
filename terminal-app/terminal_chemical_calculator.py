@@ -1,3 +1,5 @@
+import pandas
+
 from term_app_helper_methods import *
 class TerminalChemApp():
 
@@ -31,6 +33,26 @@ class TerminalChemApp():
             if key == '' or key == ' ':
                 break
 
+    def print_data_frame(self, df: pandas.DataFrame):
+        for i in range(len(df)):
+            row = f"{i} {self.truncated_data.loc[i, 'name']} {self.truncated_data.loc[i, 'formula']} {self.truncated_data.loc[i, 'state']}"
+            print(row)
+        pass
+    def handle_user_input(self, entry: str):
+        #remove leading whitespace
+        entry = entry.strip()
+        #search the dataframe
+
+        result = self.data.loc[self.data['formula'] == entry]
+        if result.empty :
+            print("No data found")
+        elif len(result) > 1:
+            print("More than one result")
+            self.print_data_frame(result)
+            input("Which do you want? Enter the index: ")
+
+
+
 
     def run(self):
         print(self.welcome_message)
@@ -43,5 +65,6 @@ class TerminalChemApp():
             elif entry == 'd':
                 self.display_data()
             else:
-                print("Process input.")
+                self.handle_user_input(entry)
+                #print("Process input.")
 
