@@ -51,7 +51,7 @@ class TerminalChemApp():
         print(list_of_indices)
 
         if result.empty :
-            print("Command not understood. Please try again.")
+            print("Invalid entry. Please try again.")
         elif len(list_of_indices) > 1:
             print(f"More than one result.")
             self.print_data_frame(result)
@@ -86,7 +86,7 @@ class TerminalChemApp():
             elif entry == 'i':
                 print(self.get_instructions())
             elif entry == 'c':
-                self.calculate()
+                print(self.calculate())
             elif entry == 'clear':
                 self.clear_chemical_lists()
             elif entry == 'p':
@@ -136,5 +136,10 @@ class TerminalChemApp():
                         choice_made = True
                 entry_processed = True
 
-    def calculate(self):
-        pass
+    def calculate(self)->str:
+        if len(self.products) == 0 or len(self.reactants) == 0:
+            return "One of the data sets is empty. Cannot calculate with an empty data set."
+        else:
+            result = generate_thermodynamic_calculations(self.data, self.reactants, self.products)
+            return result
+
