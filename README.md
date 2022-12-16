@@ -489,7 +489,8 @@ a calculator - the machine simply performs the calculations based on the input. 
 + Entering data directly from the table. It would be nice if the user could simply highlight the chemical in the table and either
 by hitting enter or some other key add it to the list of products or reactants. The Table object in the Rich library does have
 responsive elements. However, the requirement of quantities in addition to the chemical requires a non-trivial handling of user keyboard input.
-
++ Editing the list of products and reactants would also be a good feature to add. Right now, if the user accidentaly
+adds a chemical to the list, they must clear the data and start over.
 # Technology Used
 + [PyCharm IDE](https://www.jetbrains.com/pycharm/) An IDE designed specifically for Python developers. This is developed
 by JetBrains.
