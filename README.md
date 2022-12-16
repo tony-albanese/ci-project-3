@@ -73,7 +73,8 @@ From the command prompt, the user can browse the chemical data at any time by pr
 Scrolling a long list of text is annoying. Therefore, the heroku version is designed to display five rows of data
 at a time. They can exit the browsing feature by pressing enter.
 ![scrolling data](assets/screenshots/heroku_scroll.png)
-> Scroll through the chemical data easily  
+> Scroll through the chemical data easily 
+> Have the chemical data visible to me in the app.
 ### Data Entry
 The user must enter the formula as it is displayed in the datatable to enter it for calculation. The reason to 
 go by formula rather than name is mostly preference. The user will most likely be a student, and problems of this
@@ -85,10 +86,32 @@ enter the coeffient from the equation or 0 if they entered this formula in error
 > easily enter chemical quantities and formulas
 > be given hints as to how to properly enter data
 > clear my entries if I make a mistake
-### Product / Reactant List
+> be notified when I make an improper entry. I should not have to restart from the beginning if I make a mistak
 
+Once the user enters a coefficient, they are given a prompt to enter it as either a product or a reactant.
+![heroku enter chemical](assets/screenshots/heroku_enter_chemical.png)
+> be given hints as to how to properly enter data  
+> easily enter chemical quantities and formulas  
+> easily distinguish between products and reactants  
+### Product / Reactant List
+From the command prompt, the user can see a list of products or reactants they have entered so far
+by pressing the p or s keys respectively. 
+![heroku lists](assets/screenshots/heroku_lists.png)
+> easily distinguish between products and reactants 
 ### Clear / Reset
+When the user has finished with a calculation (or if they are not satisfied with their entries), they can
+clear their entries by typing "clear" from the Command: prompt.
+![heroku list cleared](assets/screenshots/heroku_cleared.png)
+> clear my entries if I make a mistake
 ### Chem Report
+Once the user has entered the products and reactants, they can initialize the calculations by pressing
+c from the Command: prompt. 
+![heroku report](assets/screenshots/heroku_report.png)
+If one of the lists is empty, the user is reminded that calculations cannot be performed if either the reactants
+or products list is empty. 
+![empty list warning](assets/screenshots/heroku_empty_data.png)
+> be notified when I make an improper entry. I should not have to restart from the beginning if I make a mistake  
+> Have the results of the calculation clearly displayed and neatly formatted 
 
 
 ## Features - Textual App
