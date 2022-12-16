@@ -219,11 +219,87 @@ get reference to dataframe
       get input
       if blank 
         break  
+      otherwise continue the loop
 ```   
 ### Searching Data Table (Heroku App)
-
+The method to search the dataframe for chemical formulas accepts the users search term as input
+and uses it to search the dataframe column with the formula data. The results of this search are handled.
+If nothing was found or if more than one entry is found, the user is notified as to what to do. (It
+might be possible for a chemical to be in the table twice if it is in different states e.g. Br2 gas and Br2
+liquid.)
+```
+strip search term of whitespace
+query the 'formula' column of the dataframe
+store indices of retrieved rows in a list
+  if the list is empty
+    tell user nothing was found
+  if the list has more than one entry
+    loop while user has not made proper choice
+      user inputs index choice
+      if index not in list of indices
+        prompt again
+      else
+        store value
+        break
+  
+  else 
+    notify user match found
+    store value
+```
+The logic to store the found chemical is simple
+```
+prompt user for coeffient
+prompr user if product or reactant
+  if product
+    store in product list
+  if reactant
+    store in reactants list
+```
 ### Validation of User Input (Heroku App)
+Since the user is constantly typing in the heroku version of the app, their input must be continuously 
+evaluated and handled if not valid.
+Here are some of the key ways user input is validated.
 
++ When adding a chemical to the list. Method checks if coefficient is a number. If 0 or blank, the value is not
+stored in the list. If invalid, the user is prompted again. If valid, the user is asked to store as a product
+or reactant.
+```
+prompt user for coefficient
+strip input of whitespace
+input_processed_flag = False
+  #Loop until user has entered valid input
+  while not input_processed_flag
+    if input is 0
+      break 
+    if input is not a number
+      prompt again
+    if input is blank
+      break
+      
+    else
+      while value not entered
+        prompt p or r
+        if p
+          store in product list
+          mark value as stored
+        if r
+          store in reactants list
+          mark value as stored        
+```
+The algorithm to produce the list of selected reactants and products is similar in both versions of the app.
+```
+   #Loop over the reactants list
+   for each reactant in reactants list
+      retrieve formula from dataframe using index in reactant_formula_list
+      store that formula in a list
+      print list
+      
+   #Loop over the products list
+      rerieve fromula from dataframe using index in product
+      store that formula in a product_formula_list
+      print list
+  
+```
 ### Creation of Data Table (Textual App)
 This is the algorithm design for the creation of the datatable. It involves loading a dataframe (which is done using
 the pandas library), creating a Table object from the Rich library, looping over the rows in the dataframe to add
