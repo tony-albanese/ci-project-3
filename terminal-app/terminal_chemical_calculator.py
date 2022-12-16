@@ -71,5 +71,4 @@ class TerminalChemApp():
                 self.display_data()
             else:
                 self.handle_user_input(entry)
-                #print("Process input.")
 
