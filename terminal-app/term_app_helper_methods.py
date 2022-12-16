@@ -1,7 +1,6 @@
 import pandas.core.frame
+import pandas as pd
 
-from chem_data.data_set import *
-from rich import print
 import re
 
 def load_data_frame():
