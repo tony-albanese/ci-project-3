@@ -75,3 +75,7 @@ class TerminalChemApp():
             else:
                 self.handle_user_input(entry)
 
+
+    def clear_chemical_lists(self):
+        self.products.clear()
+        self.reactants.clear()
