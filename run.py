@@ -1,4 +1,7 @@
-from terminal_version.terminal_chemical_calculator import TerminalChemApp
+# Your code goes here.
+# You can delete these comments, but do not change the name of this file
+# Write your code to expect a terminal of 80 characters wide and 24 rows high
+from terminal_chemical_calculator import TerminalChemApp
 
-terminal_app = TerminalChemApp()
-terminal_app.run()
+app = TerminalChemApp()
+app.run()
