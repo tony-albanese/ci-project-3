@@ -40,15 +40,16 @@ class TerminalChemApp():
         entry = entry.strip()
         #search the dataframe
         result = self.data.loc[self.data['formula'] == entry]
+        list_of_indices = []
+        for row in result.index:
+            list_of_indices.append(row)
+        print(list_of_indices)
 
         if result.empty :
             print("No data found")
-        elif len(result) > 1:
+        elif len(list_of_indices) > 1:
             print(f"More than one result.")
             self.print_data_frame(result)
-            list_of_indices = []
-            for row in result.index:
-                list_of_indices.append(row)
             choice_is_made = False
             while not choice_is_made:
                 index = input("Which do you want? Enter the index: ")
@@ -57,9 +58,12 @@ class TerminalChemApp():
                 else:
                     choice_is_made = True
                     print(f"You chose {index}")
+                    self.add_chemical_to_list(int(index))
+
         else:
             print("Found something!")
-            self.print_data_frame(result)
+            print(result)
+            self.add_chemical_to_list(list_of_indices[0])
 
 
     def run(self):
@@ -79,3 +83,6 @@ class TerminalChemApp():
     def clear_chemical_lists(self):
         self.products.clear()
         self.reactants.clear()
+
+    def add_chemical_to_list(self,  i: int):
+        print(f"Will add data at index {i}.")
