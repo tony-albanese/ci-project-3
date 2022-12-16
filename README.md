@@ -44,7 +44,43 @@ As a User I want to
 * Have the results of the calculation clearly displayed and neatly formatted
 
 # UI Design
-## Features
+There are two versions of the app for this project - both run in the terminal and both have exactly the same funtionality.
+One version uses plain text output and is deployed on Heroku. The second version is also 100% terminal app but uses the 
+textual and rich python libraries to display and style terminal widgets to give the user a better experience. 
+The reason for the two versions has to do with deployment on Heroku. For the web deployment, Code Institute deploys a
+mock terminal with a fixed size. The widgets are not displayed properly in the mock terminal. 
+
+Therefore, there is the web version which can be found here: [Thermodynamic Calculator on Heroku](https://thermodynamic-calculator.herokuapp.com/) 
+The binary versions using textual are available for download available here. 
+
+## Features Heroku Versuion App
+### Instructions
+The instructions for the app are displayed when the app runs. The user can bring up the instructions at any point
+by pressing i.  There is also a hint as to how to enter 
+a formula.
+![Heroku App Instructions](assets/screenshots/heroku_menu.png)
+> have instructions readily available so I know what to do  
+> be given hints as to how to properly enter data
+
+The instructions also serve as a menu. The user is told what to enter in order to navigate through the app. This
+is done entirely through the keyboard.
+> Navigate the sections of the app with keyboard or mouse.
+> be given hints as to how to properly enter data
+
+### Data Scrolling
+The user must have a way to see the data available so they know which chemicals they can perform calculation with. 
+From the command prompt, the user can browse the chemical data at any time by pressing d.
+Scrolling a long list of text is annoying. Therefore, the heroku version is designed to display five rows of data
+at a time. They can exit the browsing feature by pressing enter.
+![scrolling data](assets/screenshots/heroku_scroll.png)
+> Scroll through the chemical data easily  
+### Data Entry
+
+### Product / Rectant List
+
+### Clear / Reset
+### Chem Report
+## Features - Textual App
 ### Scrollable Data Table
 A table displaying a list of all the chemicals available is shown at the center of the screen. The energy values
 are not displayed to keep the screen compact and to enhance readability. After all, the purpose of the app is to
