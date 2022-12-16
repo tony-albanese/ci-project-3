@@ -522,6 +522,27 @@ large sets of data. The data in this project is accessed and queried as a pandas
   * Clicked on the Clone button at the bottom of the dialog
 
 ## Project Structure
+> This folder simply contains the images of screenshots for the README  
+![](assets/screenshots/structure_assets.png)
+
+> This folder contains modules which contain methods for performing the calculations. The balancing_equations.py
+> is not used in this project.   
+![](assets/screenshots/structure_chem_calculations.png)
+
+> This module contains the method for reading the csv file into a dataframe.  
+![](assets/screenshots/structure_chem_data.png)
+
+> The terminal_version module contains the python files for the terminal version of the app. The 
+> test folder has python scripts used for manually testing the components of the app during the 
+> development process.
+![](assets/screenshots/structure_terminal_version.png)
+
+> This module contains scripts for the textual version of the app.  
+![](assets/screenshots/structure_ui.png)
+
+> This module contains scripts for building the individual "GUI" terminal elements in the textual 
+> version of the app.  
+![](assets/screenshots/structure_ui_elements.png)
 
 ## Heroku Preparation
 To prepare the app for Heroku deployment, I created a second repository using a different template that Code Institute created
