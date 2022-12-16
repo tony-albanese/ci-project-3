@@ -119,11 +119,6 @@ def calculate_free_energy(data_frame: pandas.core.frame.DataFrame, reactants: li
         sum_products = sum_products + enthalpy * coefficient
 
     energy_change = sum_products - sum_reactants
-
-    print("Sum products: ")
-    print(sum_products)
-    print("Sum of reactants:")
-    print(sum_reactants)
     return energy_change
 
 
@@ -146,18 +141,9 @@ def calculate_entropy_change(data_frame: pandas.core.frame.DataFrame, reactants:
 
     # Divide by 1000 because of J to kJ unit conversion
     entropy_change = (sum_products - sum_reactants) / 1000
-
-    print("Sum products: ")
-    print(sum_products)
-    print("Sum of reactants:")
-    print(sum_reactants)
     return entropy_change
 
 def generate_thermodynamic_calculations(df:pandas.core.frame.DataFrame, reactants: list, products: list):
-    #df = load_data_frame()
-    #reactants = get_reactants()
-    #products = get_products()
-
     dH = calculate_enthalpy_change(df, reactants, products)
     dG = calculate_free_energy(df, reactants, products)
     dS = calculate_entropy_change(df, reactants, products)
