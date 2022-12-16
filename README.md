@@ -75,11 +75,22 @@ at a time. They can exit the browsing feature by pressing enter.
 ![scrolling data](assets/screenshots/heroku_scroll.png)
 > Scroll through the chemical data easily  
 ### Data Entry
-
-### Product / Rectant List
+The user must enter the formula as it is displayed in the datatable to enter it for calculation. The reason to 
+go by formula rather than name is mostly preference. The user will most likely be a student, and problems of this
+type typically provide formulas rather than chemical names. In addition, formulas are universal - names are not.
+Therefore, the user must enter the formula. There input is validated and if no chemical is found in the dataframe,
+the user is notified. There is a message letting the user know if a chemical has been found and a prompt to 
+enter the coeffient from the equation or 0 if they entered this formula in error.
+![heroku data entry](assets/screenshots/heroku_entry.png)
+> easily enter chemical quantities and formulas
+> be given hints as to how to properly enter data
+> clear my entries if I make a mistake
+### Product / Reactant List
 
 ### Clear / Reset
 ### Chem Report
+
+
 ## Features - Textual App
 ### Scrollable Data Table
 A table displaying a list of all the chemicals available is shown at the center of the screen. The energy values
@@ -136,6 +147,8 @@ clicks on the Clear button, the input is cleared as is the text boxes for reacta
 ![buttons](assets/screenshots/buttons.png)
 > clear my entries if I make a mistake  
 > Navigate the sections of the app with keyboard or mouse.
+
+
 ## Algorithm Design
 This sections outlines the more important algorithms in the app using pseudocode. Trivial algorithms or those
 achieved mainly through libraries are not mentioned.
@@ -280,6 +293,8 @@ reactant_formula_list
    write dG as formatted string with units to output window
    write dS as formatted string with units to output window
 ```
+
+
 # Testing
 Although unit testing is ideal, this app used many libraries which themselves have been tested. The methods that were
 developed to perform the chemical calculations are simple enough to be tested manually.
