@@ -75,7 +75,6 @@ class TerminalChemApp():
         print(self.get_instructions())
 
         while True:
-            #TODO Implement see chemicals.
             entry = input("Command: \n") #Don't forget backspace before entry.
             entry.strip()
             if entry == 'q':
