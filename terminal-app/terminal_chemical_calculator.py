@@ -64,7 +64,6 @@ class TerminalChemApp():
                     choice_is_made = True
                     print(f"You chose {index}")
                     self.add_chemical_to_list(int(index))
-
         else:
             print("Found something!")
             print(result)
@@ -117,6 +116,7 @@ class TerminalChemApp():
                 entry_processed = True
             elif not coefficient_string.isdigit():
                 print("That was not a valid response. Try again.")
+                coefficient_string = str(input("Reinput coefficient:\n"))
             else:
                 i = int(i)
                 coefficient = int(coefficient_string)
