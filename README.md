@@ -573,6 +573,43 @@ pip3 install -r requirements.txt
 + Chose branch terminal-settings
 + Clicked on Deploy Branch
 + Retrieved URL for web app when build was finished 
+
+## Binary Executables
+Since the console app will not run in the mock terminal, I still wanted the users to be able to have access to
+the much more user-friendly textual version of the app. The problem is that Python is a scripting language, and thus
+one cannot be guaranteed that the user will have Python along with all the necessary dependencies installed on their
+machine for the app to run. Therefore, the python package pyinstaller that will bundle all the packages and 
+necessary files into a single directory with an executable script that the user can run. All the dependencies 
+are included and the user does not need a python interpreter installed. Everything they need to run the app is 
+included in the folder. The pyinstaller package can be rather complicated so there is a GUI wrapper called auto-py-to-exe
+that allows the developer to select options and then run the script. 
+
+This process must be run for each operating system for which an executable will be run. Executables were prepared 
+for MacOS, Linux, and Windows. The process is the same for all platforms.
+
+### Creating the Binaries
++ install pyinstaller
+```
+pip3 install pyinstaller
+```
++ install auto-py-to-exe
+```
+pip3 install auto-py-to-exe
+```
+run the script
+```
+$ auto-py-installer
+```
++ The GUI loads. Select the script that used to launch the python app. 
++ Under Advanced, select the option -include all and enter textual and rich into each of the fields
++ Select an output directory
++ Click on the Convert .py to .exe
++ When the build is done, open the output folder
++ copy the data folder and textual_ui folder into the output folder
+  + These folders contain non-python files (like the csv and stylesheet) that are not bundled in the build but are needed
+for the app to run
++ On the linux build, mark the script as being executable
++ compress folder for distribution
 # Version Control Strategy
 Git was employed in this project and the project code hosted on [GitHub](https://github.com/). I used branches in order to keep the main branch as "pure" as possible. The strategy was to have each branch dedicated to one feature or fix.  Once I was satisfied at a particular stage of a branch, I would navigate to GitHub, click on my repository, select the branch, and create a pull request. GitHub would then check if there are no conflicts and indicate if the branch could be merged into main. (One can choose which branch to merge into.) Once the pull request is created, I navigated down, wrote a comment, and clicked on the green Merge button and the commits would be merged into the main branch.
 I tried to keep commits as atomic as possible - focusing only on one element or feature at a time. This was not always the case, but most of the commits are relatively small changes.
