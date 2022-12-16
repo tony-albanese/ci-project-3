@@ -4,8 +4,8 @@ from term_app_helper_methods import *
 class TerminalChemApp():
 
     welcome_message = '''
-        This app allows you to select chemicals from a table, enter the amounts and perform
-        thermodynamic calculations. 
+        This app allows you to perform thermodynamic calculations by 
+        selecting chemicals from a data table.
     '''
 
     def __init__(self) -> None:
@@ -44,12 +44,15 @@ class TerminalChemApp():
         if result.empty :
             print("No data found")
         elif len(result) > 1:
-            print("More than one result")
+            print(f"More than one result.")
             self.print_data_frame(result)
+            list_of_indices = []
+            for row in result.index:
+                list_of_indices.append(row)
             choice_is_made = False
             while not choice_is_made:
                 index = input("Which do you want? Enter the index: ")
-                if not index.isdigit():
+                if not index.isdigit() or not (int(index) in list_of_indices):
                     print("That is not a valid entry.")
                 else:
                     choice_is_made = True
