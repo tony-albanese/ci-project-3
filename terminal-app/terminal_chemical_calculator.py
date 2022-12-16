@@ -89,6 +89,12 @@ class TerminalChemApp():
                 self.calculate()
             elif entry == 'clear':
                 self.clear_chemical_lists()
+            elif entry == 'p':
+                formulas = extract_chemical_formulas(self.data, self.products)
+                print(f"Products: {formulas}")
+            elif entry == 'r':
+                formulas = extract_chemical_formulas(self.data, self.reactants)
+                print(f"Reactants: {formulas}")
             else:
                 self.handle_user_input(entry)
 
