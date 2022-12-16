@@ -61,7 +61,7 @@ class TerminalChemApp():
             self.print_data_frame(result)
             choice_is_made = False
             while not choice_is_made:
-                index = input("Which do you want? Enter the index: ")
+                index = input("Which do you want? Enter the index: \n")
                 if not index.isdigit() or not (int(index) in list_of_indices):
                     print("That is not a valid entry.")
                 else:
