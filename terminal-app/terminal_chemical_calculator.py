@@ -51,7 +51,7 @@ class TerminalChemApp():
         print(list_of_indices)
 
         if result.empty :
-            print("No data found")
+            print("Command not understood. Please try again.")
         elif len(list_of_indices) > 1:
             print(f"More than one result.")
             self.print_data_frame(result)
@@ -78,6 +78,7 @@ class TerminalChemApp():
         while True:
             #TODO Implement see chemicals.
             entry = input("Command: \n") #Don't forget backspace before entry.
+            entry.strip()
             if entry == 'q':
                 break
             elif entry == 'd':
@@ -86,6 +87,8 @@ class TerminalChemApp():
                 print(self.get_instructions())
             elif entry == 'c':
                 self.calculate()
+            elif entry == 'clear':
+                self.clear_chemical_lists()
             else:
                 self.handle_user_input(entry)
 
