@@ -34,24 +34,29 @@ class TerminalChemApp():
                 break
 
     def print_data_frame(self, df: pandas.DataFrame):
-        for i in range(len(df)):
-            row = f"{i} {self.truncated_data.loc[i, 'name']} {self.truncated_data.loc[i, 'formula']} {self.truncated_data.loc[i, 'state']}"
-            print(row)
-        pass
+        print(df)
     def handle_user_input(self, entry: str):
         #remove leading whitespace
         entry = entry.strip()
         #search the dataframe
-
         result = self.data.loc[self.data['formula'] == entry]
+
         if result.empty :
             print("No data found")
         elif len(result) > 1:
             print("More than one result")
             self.print_data_frame(result)
-            input("Which do you want? Enter the index: ")
-
-
+            choice_is_made = False
+            while not choice_is_made:
+                index = input("Which do you want? Enter the index: ")
+                if index.isdigit():
+                    choice_is_made = True
+                    print(f"You chose {index}")
+                else:
+                    print("That is not a valid entry.")
+        else:
+            print("Found something!")
+            self.print_data_frame(result)
 
 
     def run(self):
