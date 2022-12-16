@@ -1,6 +1,10 @@
 import pandas
 
-from term_app_helper_methods import *
+from terminal_version.term_app_helper_methods import load_data_frame, extract_chemical_formulas, \
+    generate_thermodynamic_calculations
+
+
+#from term_app_helper_methods import *
 class TerminalChemApp():
 
     welcome_message = '''

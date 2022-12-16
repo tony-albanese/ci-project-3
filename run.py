@@ -1,9 +1,4 @@
-import os
-from chem_data import data_set
-from chem_textual_ui.chem_ui import ChemApp
+from terminal_version.terminal_chemical_calculator import TerminalChemApp
 
-
-def start_chem_app():
-    app = ChemApp()
-    app.run()
-start_chem_app()
+terminal_app = TerminalChemApp()
+terminal_app.run()
