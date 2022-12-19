@@ -9,7 +9,7 @@ from chem_textual_ui.main_panel import InstructionsWindow, DataWindow, OutputPan
 
 import re
 
-
+#This is the class the encapsulates the textual (enhanced UI version) of the app.
 class ChemApp(App):
     CSS_PATH = "chem_ui.css"
 

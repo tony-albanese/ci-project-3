@@ -10,6 +10,7 @@ from textual.widget import AwaitMount
 from list_item import ListItem
 
 
+#Manual import of the ListView class from the textual library
 class ListView(Vertical, can_focus=True, can_focus_children=False):
     """Displays a vertical list of `ListItem`s which can be highlighted
     and selected using the mouse or keyboard.

@@ -3,7 +3,7 @@ import pandas as pd
 
 import re
 
-
+#These are helper methods to perform the calculations.
 def load_data_frame():
     data_frame = pd.read_csv('molecule_data.csv')
     data_frame['dH'] = data_frame['dH'].astype(float)

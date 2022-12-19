@@ -3,8 +3,8 @@ import pandas
 from terminal_version.term_app_helper_methods import load_data_frame, extract_chemical_formulas, \
     generate_thermodynamic_calculations
 
+#This class encapsulates the purely text version of the app.
 
-# from term_app_helper_methods import *
 class TerminalChemApp:
     welcome_message = '''
         This app allows you to perform thermodynamic calculations by 

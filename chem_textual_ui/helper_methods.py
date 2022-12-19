@@ -1,3 +1,6 @@
+
+#Method searches the datafram for the chemicals in chemical_list and
+#Returns a list of formulas with state data.
 def extract_chemical_formulas(df, chemical_list):
     product_formulas = []
     col_name = 'name'

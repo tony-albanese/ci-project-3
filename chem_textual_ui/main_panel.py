@@ -6,6 +6,7 @@ from textual.widgets import Static, TextLog
 from chem_data.data_set import load_data_frame
 
 
+#Widget to display the chemical data in then enhanced version of the app.
 class DataWindow(Static):
     def compose(self) -> ComposeResult:
         print("DataWindow compose()")
