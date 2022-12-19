@@ -4,6 +4,7 @@ from textual.reactive import reactive
 from textual.widget import Widget
 
 
+#This is a manual import form the textual library.
 class ListItem(Widget, can_focus=False):
     DEFAULT_CSS = """
     ListItem {

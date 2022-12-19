@@ -4,6 +4,8 @@ from textual import events
 from textual.app import ComposeResult
 from textual.widgets import Static, TextLog
 from chem_data.data_set import load_data_frame
+
+
 class DataWindow(Static):
     def compose(self) -> ComposeResult:
         print("DataWindow compose()")
@@ -49,6 +51,7 @@ class InstructionsWindow(Static):
         text = Text(self.INSTRUCTIONS)
         instructions_window.write(text)
 
+
 class OutputPanel(Static):
     def _on_mount(self, event: events.Mount) -> None:
         reactants_log = self.query_one("#reactants", TextLog)
@@ -57,6 +60,6 @@ class OutputPanel(Static):
         products_log.write("Products:")
 
     def compose(self) -> ComposeResult:
-        yield TextLog(id = "reactants")
+        yield TextLog(id="reactants")
         yield TextLog(id="products")
-        yield TextLog(id= "output")
+        yield TextLog(id="output")
