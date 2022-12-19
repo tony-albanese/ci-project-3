@@ -1,10 +1,11 @@
 from chemlib import Compound, Reaction
 
+
 def enter_formulas():
     compounds = []
     while True:
         formula = input("Enter a formula: ")
-        if(formula=='done'):
+        if (formula == 'done'):
             break
         try:
             compound = Compound(formula)
@@ -12,6 +13,7 @@ def enter_formulas():
         except:
             print("I don't think you entered a valid formula.")
     return compounds
+
 
 def balance_reaction(reactants: list, products: list):
     reaction: Reaction = Reaction(reactants, products)
@@ -21,7 +23,8 @@ def balance_reaction(reactants: list, products: list):
     except:
         return ChemResult(False, reaction)
 
-def generate_reaction()->Reaction:
+
+def generate_reaction() -> Reaction:
     print("Enter reactants. Type 'done' when you are finished.")
     reactants = enter_formulas()
     print("Enter products. Type 'done' when you are finished.")
@@ -30,10 +33,11 @@ def generate_reaction()->Reaction:
 
 
 class StoichiometryResult:
-    def __init__(self, status: bool, formula_amounts: list, message : str =""):
+    def __init__(self, status: bool, formula_amounts: list, message: str = ""):
         self.status = status
         self.formula_amounts = formula_amounts
         self.message = message
+
 
 def calculate_stoichiometry_by_mass(reaction: Reaction, position: int, amount: float) -> StoichiometryResult:
     try:
@@ -42,6 +46,7 @@ def calculate_stoichiometry_by_mass(reaction: Reaction, position: int, amount: f
     except:
         return StoichiometryResult(False, [], "Calculations could not be performed.")
 
+
 def calculate_stoichiometry_by_mole(reaction: Reaction, position: int, amount: float) -> StoichiometryResult:
     try:
         stoichiometry = reaction.get_amounts(position, moles=amount)
@@ -49,9 +54,8 @@ def calculate_stoichiometry_by_mole(reaction: Reaction, position: int, amount: f
     except:
         return StoichiometryResult(False, [], "Calculations could not be performed.")
 
+
 class ChemResult:
     def __init__(self, status: bool, reaction: Reaction):
         self.status = status
         self.reaction = reaction
-
-
