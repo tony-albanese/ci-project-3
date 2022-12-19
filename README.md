@@ -491,6 +491,13 @@ by hitting enter or some other key add it to the list of products or reactants. 
 responsive elements. However, the requirement of quantities in addition to the chemical requires a non-trivial handling of user keyboard input.
 + Editing the list of products and reactants would also be a good feature to add. Right now, if the user accidentaly
 adds a chemical to the list, they must clear the data and start over.
+# Unfixed bugs
++ In the textual version of the app, sometimes the reactants or products do not show in the output window
+even if they are entered. Then they will randomly appear if the screen is refreshed or another is added. This
+appears to be an artifact of the textual library interacting with the terminal.
++ Not really a bug but an annoyance is the number of significant figures in the dS calculation. Sometimes
+too many decimal places are displayed. This is not really a bug but a formatting issue that should be 
+corrected in future releases.
 # Technology Used
 + [PyCharm IDE](https://www.jetbrains.com/pycharm/) An IDE designed specifically for Python developers. This is developed
 by JetBrains.
