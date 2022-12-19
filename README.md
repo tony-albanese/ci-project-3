@@ -536,8 +536,6 @@ large sets of data. The data in this project is accessed and queried as a pandas
 > test folder has python scripts used for manually testing the components of the app during the development process.  
 ![](assets/screenshots/structure_terminal_version.png)
 
-> This module contains scripts for the textual version of the app.  
-![](assets/screenshots/structure_ui.png)
 
 > This module contains scripts for building the individual "GUI" terminal elements in the textual 
 > version of the app.  
