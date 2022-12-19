@@ -147,6 +147,7 @@ def calculate_entropy_change(data_frame: pandas.core.frame.DataFrame, reactants:
     print(sum_reactants)
     return entropy_change
 
+
 def generate_thermodynamic_calculations():
     df = load_data_frame()
     reactants = get_reactants()
@@ -168,6 +169,7 @@ def generate_thermodynamic_calculations():
     """
     print(report)
     return report
+
 
 def extract_chemical_formulas(df: pandas.core.frame.DataFrame, chemical_list: list):
     product_formulas = []
