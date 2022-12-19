@@ -3,4 +3,3 @@ import os
 os.system('cls' if os.name == 'nt' else 'clear')
 app = TerminalChemApp()
 app.run()
-
