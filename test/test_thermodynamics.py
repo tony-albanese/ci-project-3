@@ -1,5 +1,6 @@
 from chem_calculations.thermodynamics import *
 
+#Test method to make sure thermodynamic calculations are performed.
 df = load_data_frame()
 
 reacts = get_reactants()

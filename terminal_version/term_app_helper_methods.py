@@ -3,10 +3,11 @@ import pandas as pd
 
 import re
 
+#These are helper methods to perform the calculations.
 def load_data_frame():
-    dataFrame = pd.read_csv('molecule_data.csv')
-    dataFrame['dH'] = dataFrame['dH'].astype(float)
-    return dataFrame
+    data_frame = pd.read_csv('molecule_data.csv')
+    data_frame['dH'] = data_frame['dH'].astype(float)
+    return data_frame
 
 
 def calculate_thermodynamic_properties():
@@ -33,8 +34,8 @@ def get_reactants():
             pair = user_input.split(",")
             row = int(pair[0])
             coefficient = int(pair[1])
-            asTuple = (row, coefficient)
-            reactants.append(asTuple)
+            as_tuple = (row, coefficient)
+            reactants.append(as_tuple)
         else:
             print("Invalid input")
 
@@ -54,8 +55,8 @@ def get_products():
             pair = user_input.split(",")
             row = int(pair[0])
             coefficient = int(pair[1])
-            asTuple = (row, coefficient)
-            products.append(asTuple)
+            as_tuple = (row, coefficient)
+            products.append(as_tuple)
         else:
             print("Invalid input")
 
@@ -119,11 +120,6 @@ def calculate_free_energy(data_frame: pandas.core.frame.DataFrame, reactants: li
         sum_products = sum_products + enthalpy * coefficient
 
     energy_change = sum_products - sum_reactants
-
-    print("Sum products: ")
-    print(sum_products)
-    print("Sum of reactants:")
-    print(sum_reactants)
     return energy_change
 
 
@@ -146,18 +142,10 @@ def calculate_entropy_change(data_frame: pandas.core.frame.DataFrame, reactants:
 
     # Divide by 1000 because of J to kJ unit conversion
     entropy_change = (sum_products - sum_reactants) / 1000
-
-    print("Sum products: ")
-    print(sum_products)
-    print("Sum of reactants:")
-    print(sum_reactants)
     return entropy_change
 
-def generate_thermodynamic_calculations(df:pandas.core.frame.DataFrame, reactants: list, products: list):
-    #df = load_data_frame()
-    #reactants = get_reactants()
-    #products = get_products()
 
+def generate_thermodynamic_calculations(df: pandas.core.frame.DataFrame, reactants: list, products: list):
     dH = calculate_enthalpy_change(df, reactants, products)
     dG = calculate_free_energy(df, reactants, products)
     dS = calculate_entropy_change(df, reactants, products)
@@ -173,6 +161,7 @@ def generate_thermodynamic_calculations(df:pandas.core.frame.DataFrame, reactant
     The entropy change (dS) is: {dS} kJ per mol per Kelvin
     """
     return report
+
 
 def extract_chemical_formulas(df: pandas.core.frame.DataFrame, chemical_list: list):
     product_formulas = []

@@ -2,12 +2,13 @@ from textual.app import ComposeResult
 from textual.widgets import Static, Button, Label, Input
 
 
-#Container for the input fields and two buttons
+# Container for the input fields and two buttons
 class UserInputArea(Static):
     def compose(self) -> ComposeResult:
         yield InputArea()
         yield Button("Calculate!", id="btn_calculate", variant="success")
         yield Button("Clear", id="btn_clear", variant="error")
+
 
 class InputArea(Static):
     def compose(self) -> ComposeResult:

@@ -6,8 +6,6 @@ import re
 
 
 def calculate_thermodynamic_properties():
-    reactants = []
-    products = []
     while True:
         print("Enter a reactant and the coefficient from the balanced equation separated by a comma.")
         print("When you are done entering reactants, type done")
@@ -29,8 +27,8 @@ def get_reactants():
             pair = user_input.split(",")
             row = int(pair[0])
             coefficient = int(pair[1])
-            asTuple = (row, coefficient)
-            reactants.append(asTuple)
+            as_tuple = (row, coefficient)
+            reactants.append(as_tuple)
         else:
             print("Invalid input")
 
@@ -50,8 +48,8 @@ def get_products():
             pair = user_input.split(",")
             row = int(pair[0])
             coefficient = int(pair[1])
-            asTuple = (row, coefficient)
-            products.append(asTuple)
+            as_tuple = (row, coefficient)
+            products.append(as_tuple)
         else:
             print("Invalid input")
 
@@ -149,6 +147,7 @@ def calculate_entropy_change(data_frame: pandas.core.frame.DataFrame, reactants:
     print(sum_reactants)
     return entropy_change
 
+
 def generate_thermodynamic_calculations():
     df = load_data_frame()
     reactants = get_reactants()
@@ -170,6 +169,7 @@ def generate_thermodynamic_calculations():
     """
     print(report)
     return report
+
 
 def extract_chemical_formulas(df: pandas.core.frame.DataFrame, chemical_list: list):
     product_formulas = []

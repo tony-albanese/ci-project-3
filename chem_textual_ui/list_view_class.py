@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from textual import events
 from textual.await_remove import AwaitRemove
 from textual.binding import Binding
 from textual.containers import Vertical
@@ -9,6 +8,9 @@ from textual.message import Message
 from textual.reactive import reactive
 from textual.widget import AwaitMount
 from list_item import ListItem
+
+
+#Manual import of the ListView class from the textual library
 class ListView(Vertical, can_focus=True, can_focus_children=False):
     """Displays a vertical list of `ListItem`s which can be highlighted
     and selected using the mouse or keyboard.
@@ -31,12 +33,12 @@ class ListView(Vertical, can_focus=True, can_focus_children=False):
     index = reactive(0, always_update=True)
 
     def __init__(
-        self,
-        *children: ListItem,
-        initial_index: int | None = 0,
-        name: str | None = None,
-        id: str | None = None,
-        classes: str | None = None,
+            self,
+            *children: ListItem,
+            initial_index: int | None = 0,
+            name: str | None = None,
+            id: str | None = None,
+            classes: str | None = None,
     ) -> None:
         """
         Args:

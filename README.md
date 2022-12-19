@@ -44,7 +44,77 @@ As a User I want to
 * Have the results of the calculation clearly displayed and neatly formatted
 
 # UI Design
-## Features
+There are two versions of the app for this project - both run in the terminal and both have exactly the same funtionality.
+One version uses plain text output and is deployed on Heroku. The second version is also 100% terminal app but uses the 
+textual and rich python libraries to display and style terminal widgets to give the user a better experience. 
+The reason for the two versions has to do with deployment on Heroku. For the web deployment, Code Institute deploys a
+mock terminal with a fixed size. The widgets are not displayed properly in the mock terminal. 
+
+Therefore, there is the web version which can be found here: [Thermodynamic Calculator on Heroku](https://thermodynamic-calculator.herokuapp.com/) 
+The binary versions using textual are available for download available here. 
+
+## Features Heroku Versuion App
+### Instructions
+The instructions for the app are displayed when the app runs. The user can bring up the instructions at any point
+by pressing i.  There is also a hint as to how to enter 
+a formula.
+![Heroku App Instructions](assets/screenshots/heroku_menu.png)
+> have instructions readily available so I know what to do  
+> be given hints as to how to properly enter data
+
+The instructions also serve as a menu. The user is told what to enter in order to navigate through the app. This
+is done entirely through the keyboard.
+> Navigate the sections of the app with keyboard or mouse.
+> be given hints as to how to properly enter data
+
+### Data Scrolling
+The user must have a way to see the data available so they know which chemicals they can perform calculation with. 
+From the command prompt, the user can browse the chemical data at any time by pressing d.
+Scrolling a long list of text is annoying. Therefore, the heroku version is designed to display five rows of data
+at a time. They can exit the browsing feature by pressing enter.
+![scrolling data](assets/screenshots/heroku_scroll.png)
+> Scroll through the chemical data easily 
+> Have the chemical data visible to me in the app.
+### Data Entry
+The user must enter the formula as it is displayed in the datatable to enter it for calculation. The reason to 
+go by formula rather than name is mostly preference. The user will most likely be a student, and problems of this
+type typically provide formulas rather than chemical names. In addition, formulas are universal - names are not.
+Therefore, the user must enter the formula. There input is validated and if no chemical is found in the dataframe,
+the user is notified. There is a message letting the user know if a chemical has been found and a prompt to 
+enter the coeffient from the equation or 0 if they entered this formula in error.
+![heroku data entry](assets/screenshots/heroku_entry.png)
+> easily enter chemical quantities and formulas
+> be given hints as to how to properly enter data
+> clear my entries if I make a mistake
+> be notified when I make an improper entry. I should not have to restart from the beginning if I make a mistak
+
+Once the user enters a coefficient, they are given a prompt to enter it as either a product or a reactant.
+![heroku enter chemical](assets/screenshots/heroku_enter_chemical.png)
+> be given hints as to how to properly enter data  
+> easily enter chemical quantities and formulas  
+> easily distinguish between products and reactants  
+### Product / Reactant List
+From the command prompt, the user can see a list of products or reactants they have entered so far
+by pressing the p or s keys respectively. 
+![heroku lists](assets/screenshots/heroku_lists.png)
+> easily distinguish between products and reactants 
+### Clear / Reset
+When the user has finished with a calculation (or if they are not satisfied with their entries), they can
+clear their entries by typing "clear" from the Command: prompt.
+![heroku list cleared](assets/screenshots/heroku_cleared.png)
+> clear my entries if I make a mistake
+### Chem Report
+Once the user has entered the products and reactants, they can initialize the calculations by pressing
+c from the Command: prompt. 
+![heroku report](assets/screenshots/heroku_report.png)
+If one of the lists is empty, the user is reminded that calculations cannot be performed if either the reactants
+or products list is empty. 
+![empty list warning](assets/screenshots/heroku_empty_data.png)
+> be notified when I make an improper entry. I should not have to restart from the beginning if I make a mistake  
+> Have the results of the calculation clearly displayed and neatly formatted 
+
+
+## Features - Textual App
 ### Scrollable Data Table
 A table displaying a list of all the chemicals available is shown at the center of the screen. The energy values
 are not displayed to keep the screen compact and to enhance readability. After all, the purpose of the app is to
@@ -100,10 +170,137 @@ clicks on the Clear button, the input is cleared as is the text boxes for reacta
 ![buttons](assets/screenshots/buttons.png)
 > clear my entries if I make a mistake  
 > Navigate the sections of the app with keyboard or mouse.
+
+
 ## Algorithm Design
 This sections outlines the more important algorithms in the app using pseudocode. Trivial algorithms or those
 achieved mainly through libraries are not mentioned.
-### Creation of Data Table
+
+### Main Program Flow
+The program's execution is essentially an infinite while loop that polls the user for input. This is the outline
+of the run loop in pseudocode.
+```
+load app
+dislay welcome message
+display instructions
+
+while True:
+  get user input
+  if q
+    break 
+  if c
+    perform calculations
+  if i
+    print instructions
+  if 'clear'
+    clear data
+  if p
+    print products
+  if r
+    print reactants
+  if d
+    display data
+  else
+    send input for further handling
+```
+### Scrolling Data Table (Heroku App)
+Both versions of the app display the same data. The textual version has a table widget
+to display the data. That is not possible on the emulated console. Therefore, the user must be displayed data
+in small pages of five rows to prevent having to scroll (since the scroll behavior of the emulated terminal is
+unknown). Also, the emulated terminal is very small and cannot be changed. The user should not be overwhelmed with
+too much data on the screen at once. Here is the general algorithm for displaying the table in pages.
+```
+get reference to dataframe
+  i = 0
+  while i < dataframe.length
+      loop i to i + 5 
+        print the ith row of the dataframe
+        i++
+      get input
+      if blank 
+        break  
+      otherwise continue the loop
+```   
+### Searching Data Table (Heroku App)
+The method to search the dataframe for chemical formulas accepts the users search term as input
+and uses it to search the dataframe column with the formula data. The results of this search are handled.
+If nothing was found or if more than one entry is found, the user is notified as to what to do. (It
+might be possible for a chemical to be in the table twice if it is in different states e.g. Br2 gas and Br2
+liquid.)
+```
+strip search term of whitespace
+query the 'formula' column of the dataframe
+store indices of retrieved rows in a list
+  if the list is empty
+    tell user nothing was found
+  if the list has more than one entry
+    loop while user has not made proper choice
+      user inputs index choice
+      if index not in list of indices
+        prompt again
+      else
+        store value
+        break
+  
+  else 
+    notify user match found
+    store value
+```
+The logic to store the found chemical is simple
+```
+prompt user for coeffient
+prompr user if product or reactant
+  if product
+    store in product list
+  if reactant
+    store in reactants list
+```
+### Validation of User Input (Heroku App)
+Since the user is constantly typing in the heroku version of the app, their input must be continuously 
+evaluated and handled if not valid.
+Here are some of the key ways user input is validated.
+
++ When adding a chemical to the list. Method checks if coefficient is a number. If 0 or blank, the value is not
+stored in the list. If invalid, the user is prompted again. If valid, the user is asked to store as a product
+or reactant.
+```
+prompt user for coefficient
+strip input of whitespace
+input_processed_flag = False
+  #Loop until user has entered valid input
+  while not input_processed_flag
+    if input is 0
+      break 
+    if input is not a number
+      prompt again
+    if input is blank
+      break
+      
+    else
+      while value not entered
+        prompt p or r
+        if p
+          store in product list
+          mark value as stored
+        if r
+          store in reactants list
+          mark value as stored        
+```
+The algorithm to produce the list of selected reactants and products is similar in both versions of the app.
+```
+   #Loop over the reactants list
+   for each reactant in reactants list
+      retrieve formula from dataframe using index in reactant_formula_list
+      store that formula in a list
+      print list
+      
+   #Loop over the products list
+      rerieve fromula from dataframe using index in product
+      store that formula in a product_formula_list
+      print list
+  
+```
+### Creation of Data Table (Textual App)
 This is the algorithm design for the creation of the datatable. It involves loading a dataframe (which is done using
 the pandas library), creating a Table object from the Rich library, looping over the rows in the dataframe to add
 the data from the rows to the Table. That table object is then written to the correct TextLog in the UI.
@@ -122,7 +319,7 @@ GET reference to TextLog widget
 on widget mount to window:
    print table object to log
 ```
-### Handling and Validation of User Input
+### Handling and Validation of User Input (Textual App)
 This logic is handled by the _on_input_submitted() method which is part of the Textual library. This method
 is called whenever the user hits the enter key on an Input object. The method is passed an Input.Submitted object
 which contains data about the object and data submitted.
@@ -174,7 +371,7 @@ index = split_string_array[0] #The first value is supposed to be the index
 ### Querying Data
 The logic for retrieving data from a dataframe object is simple. One simply calls the _get_value() method on
 the dataframe object and pass in the index of the row and name of the column as a string. 
-### Event Handling
+### Event Handling (Textual App)
 The Textual libraries built in widgets have a set of event handlers to respond to user events such as clicks, input
 submission, and text changes. This is the logic that is executed by the library's on_button_pressed() method which
 is called any time a user clicks on a button object with the mouse or presses the Enter key while a button object
@@ -190,7 +387,7 @@ if button.id == 'clear button'
    clear the prodcuts window
 
 ```
-### Calculation of Quantities
+### Calculation of Quantities (Both Textual and Heroku Versions)
 This is the key algorithm in the app as it is responsible for producing the output that the user needs. The
 general steps in the calculation of quantities and the production of hte output are as follows:
 1. calculate the dH, dG, and dS
@@ -244,10 +441,29 @@ reactant_formula_list
    write dG as formatted string with units to output window
    write dS as formatted string with units to output window
 ```
+
 # Testing
 Although unit testing is ideal, this app used many libraries which themselves have been tested. The methods that were
 developed to perform the chemical calculations are simple enough to be tested manually.
-## Manual testing
+## Manual Testing Heroku App
+| Test Description              | Test                                                                                                                        | Result |
+|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------|--------|
+| instructions are visible      | When the app is loaded <br> the instructions are visible                                                                    | PASSS  |
+| instructions are visible      | When the user enters i on the command prompt <br> the instructions are printed                                              | PASS   |
+| quit function                 | When the user presses q on the command prompt <br> the app quits                                                            | PASS   |
+| display data                  | When the user presses d on the command primpt <br> the data table is displayed <br> five rows are displayed                 | PASS   |
+| next set of data displayed    | When the user presses  <br> the next five rows of data are displayed. <br> if they hit enter, they return to command prompt | PASS   |
+| user can see selections       | When user presses p on command prompt <bre> list of products is shown.                                                      | PASS   |
+| user can see selections       | When user presses r on command prompt <br> list of reactants is shown.                                                      | PASS   |
+| user can clear selections     | When user enters clear on command prompt <br> and then prints products or reactants <br> empty list is displayed            | PASS   |
+| user gets calculation report  | When user enters c on command prompt <b> caluculation report is displayed with formatting <br> and selected chemicals       | PASS   |
+| no calculations on empty list | If reactant or product list is empty <br> no calculations are performed <br> user is notified                               | PASS   |
+| invalid input is handled      | When the user enters invalid coefficient <br> the user is notified and asked again                                          | PASS   |
+| invalid input is handled      | When the user enters non existent formula <br> the user is notified and returned to command prompt                          | PASS   |
+| invalid input is handled      | When the user enters invalid index when more than one match is found <br> the user is notified and asked again              | PASS   |
+| invalid input is handled      | When the user enters invalid choice for product or reactant <br> the user is notified and asked again                        | PASS   |
+
+## Manual Testing Textual App
 | Test Description                               | Test                                                                                                                                                                                                                                | Result |
 |------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
 | Instructions are visible                       | When the app is run<br> Then the instructions are clearly visible in the left panel.                                                                                                                                                | PASS   |
@@ -273,7 +489,8 @@ a calculator - the machine simply performs the calculations based on the input. 
 + Entering data directly from the table. It would be nice if the user could simply highlight the chemical in the table and either
 by hitting enter or some other key add it to the list of products or reactants. The Table object in the Rich library does have
 responsive elements. However, the requirement of quantities in addition to the chemical requires a non-trivial handling of user keyboard input.
-
++ Editing the list of products and reactants would also be a good feature to add. Right now, if the user accidentaly
+adds a chemical to the list, they must clear the data and start over.
 # Technology Used
 + [PyCharm IDE](https://www.jetbrains.com/pycharm/) An IDE designed specifically for Python developers. This is developed
 by JetBrains.
@@ -295,14 +512,6 @@ relatively easy.
 large sets of data. The data in this project is accessed and queried as a pandas dataframe.
 
 # Deployment
-+ Create a repository dedicated for deployment using the [python project template](https://github.com/Code-Institute-Org/python-essentials-template) provided by 
-CodeInstitute.
-+ Create workspace in GitPod from new repository. 
-+ Update requirements.txt
-```
-pip3 freeze > requirements.txt
-```
-
 ## Project Creation
 * The project was started by navigating to the [template](https://github.com/Code-Institute-Org/gitpod-full-template) and clicking 'Use this template'. Under Repository name I input ci-project-3. I then navigated to the new [repository for project 3](https://github.com/tony-albanese/ci-project-3). 
 * I then cloned the repository into PyCharm by doing the following:
@@ -311,7 +520,95 @@ pip3 freeze > requirements.txt
   * Copied the [clone url](https://github.com/tony-albanese/ci-project-3.git) for the repository
   * Selected an empty project folder
   * Clicked on the Clone button at the bottom of the dialog
-## Heroku
+
+## Project Structure
+> This folder simply contains the images of screenshots for the README  
+![](assets/screenshots/structure_assets.png)
+
+> This folder contains modules which contain methods for performing the calculations. The balancing_equations.py
+> is not used in this project.   
+![](assets/screenshots/structure_chem_calculations.png)
+
+> This module contains the method for reading the csv file into a dataframe.  
+![](assets/screenshots/structure_chem_data.png)
+
+> The terminal_version module contains the python files for the terminal version of the app. The 
+> test folder has python scripts used for manually testing the components of the app during the development process.  
+![](assets/screenshots/structure_terminal_version.png)
+
+> This module contains scripts for the textual version of the app.  
+![](assets/screenshots/structure_ui.png)
+
+> This module contains scripts for building the individual "GUI" terminal elements in the textual 
+> version of the app.  
+![](assets/screenshots/structure_ui_elements.png)
+
+## Heroku Preparation
+To prepare the app for Heroku deployment, I created a second repository using a different template that Code Institute created
+for Python Essentials. 
+### GitHub Preparation
++ Create a repository dedicated for deployment using the [python project template](https://github.com/Code-Institute-Org/python-essentials-template) provided by 
+CodeInstitute. This particular repository was named [ci-project-3-deployment](https://github.com/tony-albanese/ci-project-3-deployment) and is only for deployment to heroku
++ Create workspace in GitPod from new repository.
++ Stored the requirements of the python environment in the [repository for project 3](https://github.com/tony-albanese/ci-project-3).
+```
+pip3 freeze > requirements.txt
+```
++ copied over the requirements.txt to the deployment repository
++ Updated the python enviroment in the deployment repository
+```
+pip3 install -r requirements.txt
+```
++ copied the files for the purely terminal version of the app to the root directory of this repository
+### Heroku Deployment
++ Created Heroku account
++ From the dashboard, clicked on New -> Create New App
++ Gave the app the name thermodynamic-calculator
++ Clicked on Settings -> Add BuildPack
++ Added Python BuildPack and clicked save
++ Added Node.js BuildPack and clicked save
++ Clicked on Deploy tab
++ Under manual deploy, selected Deploy a GitHub Branch
++ Chose branch terminal-settings
++ Clicked on Deploy Branch
++ Retrieved URL for web app when build was finished 
+
+## Binary Executables
+Since the console app will not run in the mock terminal, I still wanted the users to be able to have access to
+the much more user-friendly textual version of the app. The problem is that Python is a scripting language, and thus
+one cannot be guaranteed that the user will have Python along with all the necessary dependencies installed on their
+machine for the app to run. Therefore, the python package pyinstaller that will bundle all the packages and 
+necessary files into a single directory with an executable script that the user can run. All the dependencies 
+are included and the user does not need a python interpreter installed. Everything they need to run the app is 
+included in the folder. The pyinstaller package can be rather complicated so there is a GUI wrapper called auto-py-to-exe
+that allows the developer to select options and then run the script. 
+
+This process must be run for each operating system for which an executable will be run. Executables were prepared 
+for MacOS, Linux, and Windows. The process is the same for all platforms.
+
+### Creating the Binaries
++ install pyinstaller
+```
+pip3 install pyinstaller
+```
++ install auto-py-to-exe
+```
+pip3 install auto-py-to-exe
+```
+run the script
+```
+$ auto-py-installer
+```
++ The GUI loads. Select the script that used to launch the python app. 
++ Under Advanced, select the option -include all and enter textual and rich into each of the fields
++ Select an output directory
++ Click on the Convert .py to .exe
++ When the build is done, open the output folder
++ copy the data folder and textual_ui folder into the output folder
+  + These folders contain non-python files (like the csv and stylesheet) that are not bundled in the build but are needed
+for the app to run
++ On the linux build, mark the script as being executable
++ compress folder for distribution
 # Version Control Strategy
 Git was employed in this project and the project code hosted on [GitHub](https://github.com/). I used branches in order to keep the main branch as "pure" as possible. The strategy was to have each branch dedicated to one feature or fix.  Once I was satisfied at a particular stage of a branch, I would navigate to GitHub, click on my repository, select the branch, and create a pull request. GitHub would then check if there are no conflicts and indicate if the branch could be merged into main. (One can choose which branch to merge into.) Once the pull request is created, I navigated down, wrote a comment, and clicked on the green Merge button and the commits would be merged into the main branch.
 I tried to keep commits as atomic as possible - focusing only on one element or feature at a time. This was not always the case, but most of the commits are relatively small changes.
