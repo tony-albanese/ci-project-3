@@ -498,12 +498,30 @@ appears to be an artifact of the textual library interacting with the terminal.
 + Not really a bug but an annoyance is the number of significant figures in the dS calculation. Sometimes
 too many decimal places are displayed. This is not really a bug but a formatting issue that should be 
 corrected in future releases.
+
 # Technology Used
 + [PyCharm IDE](https://www.jetbrains.com/pycharm/) An IDE designed specifically for Python developers. This is developed
 by JetBrains.
 + [Google Sheets](https://www.google.com/sheets/about/) This online spreadsheet was used to organize the chemical data
 into rows and columns that could easily be exported into CSV (comma separated value) text format which can be 
 easily loaded in Python.
+
+## Type Annotation
+Python is a strongly typed language - that means that each variable does indeed have a type. It also dynamically typed 
+which means those variable types are determined at run time. This can cause a lot of headaches for a developer as any 
+misuse of types in calling a function will not be apparent until run time. With type declaration, one can specify
+what the types of variables are and then the IDE can help diagnose problems. (Since python is not compiled in the 
+tranditional sense, misuse of types will not prevent code from running.) In addition, the IDE can also
+provide intellisense when it knows what the variable type is. For example, look at the following
+method declation:
+```
+def calculate_enthalpy_change(data_frame: pandas.core.frame.DataFrame, reactants: list, products: list):
+```
+This is saying that the first parameter is a DataFrame object and the next two parameters are lists. 
+The IDE then provides code hints for the data_frame parameter etc that are appropriate for a DataFrame 
+object.
+
+Type annotation is a relatively new feature in Python development.
 
 ## Python Libraries
 The Python community is quite large and as a result, there are numerous libraries (almost all freely available) that 
@@ -532,27 +550,6 @@ large sets of data. The data in this project is accessed and queried as a pandas
   * Copied the [clone url](https://github.com/tony-albanese/ci-project-3.git) for the repository
   * Selected an empty project folder
   * Clicked on the Clone button at the bottom of the dialog
-
-## Workflow and Strategy
-The first step in tackling this problem was to build the "backend" so to speak - I focused on writing methods that 
-functioned as independently as possible and would focus on doing one or two things. In addition, I wanted to take
-advantage of type annotation in Python and some type of dependency injection.
-
-### Type Annotation
-Python is a strongly typed language - that means that each variable does indeed have a type. It also dynamically typed 
-which means those variable types are determined at run time. This can cause a lot of headaches for a developer as any 
-misuse of types in calling a function will not be apparent until run time. With type declaration, one can specify
-what the types of variables are and then the IDE can help diagnose problems. (Since python is not compiled in the 
-tranditional sense, misuse of types will not prevent code from running.) In addition, the IDE can also
-provide intellisense when it knows what the variable type is. For example, look at the following
-method declation:
-```
-def calculate_enthalpy_change(data_frame: pandas.core.frame.DataFrame, reactants: list, products: list):
-```
-This is saying that the first parameter is a DataFrame object and the next two parameters are lists. 
-The IDE then provides code hints for the data_frame parameter etc that are appropriate for a DataFrame 
-object.
-
 
 
 ## Project Structure
