@@ -51,7 +51,7 @@ The reason for the two versions has to do with deployment on Heroku. For the web
 mock terminal with a fixed size. The widgets are not displayed properly in the mock terminal. 
 
 Therefore, there is the web version which can be found here: [Thermodynamic Calculator on Heroku](https://thermodynamic-calculator.herokuapp.com/) 
-The binary versions using textual are available for download available here. 
+<br> The binary versions using textual are available for download available here: [Thermodynamics Calculator](https://tony-albanese.github.io/chem-calc-landing-page/)
 
 ## Features Heroku Version App
 ### Instructions
