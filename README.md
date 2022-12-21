@@ -534,6 +534,25 @@ large sets of data. The data in this project is accessed and queried as a pandas
   * Clicked on the Clone button at the bottom of the dialog
 
 ## Workflow and Strategy
+The first step in tackling this problem was to build the "backend" so to speak - I focused on writing methods that 
+functioned as independently as possible and would focus on doing one or two things. In addition, I wanted to take
+advantage of type annotation in Python and some type of dependency injection.
+
+### Type Annotation
+Python is a strongly typed language - that means that each variable does indeed have a type. It also dynamically typed 
+which means those variable types are determined at run time. This can cause a lot of headaches for a developer as any 
+misuse of types in calling a function will not be apparent until run time. With type declaration, one can specify
+what the types of variables are and then the IDE can help diagnose problems. (Since python is not compiled in the 
+tranditional sense, misuse of types will not prevent code from running.) In addition, the IDE can also
+provide intellisense when it knows what the variable type is. For example, look at the following
+method declation:
+```
+def calculate_enthalpy_change(data_frame: pandas.core.frame.DataFrame, reactants: list, products: list):
+```
+This is saying that the first parameter is a DataFrame object and the next two parameters are lists. 
+The IDE then provides code hints for the data_frame parameter etc that are appropriate for a DataFrame 
+object.
+
 
 
 ## Project Structure
