@@ -559,14 +559,14 @@ Python is a strongly typed language - that means that each variable does indeed 
 which means those variable types are determined at run time. This can cause a lot of headaches for a developer as any 
 misuse of types in calling a function will not be apparent until run time. With type declaration, one can specify
 what the types of variables are and then the IDE can help diagnose problems. (Since python is not compiled in the 
-tranditional sense, misuse of types will not prevent code from running.) In addition, the IDE can also
+traditional sense, misuse of types will not prevent code from running.) In addition, the IDE can also
 provide intellisense when it knows what the variable type is. For example, look at the following
-method declation:
+method declaration:
 ```
 def calculate_enthalpy_change(data_frame: pandas.core.frame.DataFrame, reactants: list, products: list):
 ```
 This is saying that the first parameter is a DataFrame object and the next two parameters are lists. 
-The IDE then provides code hints for the data_frame parameter etc that are appropriate for a DataFrame 
+The IDE then provides code hints for the data_frame parameter etc. that are appropriate for a DataFrame 
 object.
 
 Type annotation is a relatively new feature in Python development.
@@ -583,7 +583,7 @@ This library also has a layout and styling mechanism that is based on CSS that m
 relatively easy.
 + [pandas](https://pandas.pydata.org/) This python library is used by data scientists to display, query, and manipulate 
 large sets of data. The data in this project is accessed and queried as a pandas dataframe.
-+ [pyinstaller](https://pyinstaller.org/en/stable/) This library is used to bundle a python project and its depedencies
++ [pyinstaller](https://pyinstaller.org/en/stable/) This library is used to bundle a python project and its dependencies
   (with interpreter) so that a user can run a python program on their local machine without requiring them to have
   a python environment installed.
 + [auto-py-to-exe](https://pypi.org/project/auto-py-to-exe/) This is a GUI wrapper around pyinstaller to make setting the options 
