@@ -517,6 +517,11 @@ This library also has a layout and styling mechanism that is based on CSS that m
 relatively easy.
 + [pandas](https://pandas.pydata.org/) This python library is used by data scientists to display, query, and manipulate 
 large sets of data. The data in this project is accessed and queried as a pandas dataframe.
++ [pyinstaller](https://pyinstaller.org/en/stable/) This library is used to bundle a python project and its depedencies
+  (with interpreter) so that a user can run a python program on their local machine without requiring them to have
+  a python environment installed.
++ [auto-py-to-exe](https://pypi.org/project/auto-py-to-exe/) This is a GUI wrapper around pyinstaller to make setting the options 
+  clearer and easier.
 
 # Deployment
 ## Project Creation
