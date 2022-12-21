@@ -44,7 +44,7 @@ As a User I want to
 * Have the results of the calculation clearly displayed and neatly formatted
 
 # UI Design
-There are two versions of the app for this project - both run in the terminal and both have exactly the same funtionality.
+There are two versions of the app for this project - both run in the terminal and both have exactly the same functionality.
 One version uses plain text output and is deployed on Heroku. The second version is also 100% terminal app but uses the 
 textual and rich python libraries to display and style terminal widgets to give the user a better experience. 
 The reason for the two versions has to do with deployment on Heroku. For the web deployment, Code Institute deploys a
@@ -53,7 +53,7 @@ mock terminal with a fixed size. The widgets are not displayed properly in the m
 Therefore, there is the web version which can be found here: [Thermodynamic Calculator on Heroku](https://thermodynamic-calculator.herokuapp.com/) 
 The binary versions using textual are available for download available here. 
 
-## Features Heroku Versuion App
+## Features Heroku Version App
 ### Instructions
 The instructions for the app are displayed when the app runs. The user can bring up the instructions at any point
 by pressing i.  There is also a hint as to how to enter 
@@ -81,12 +81,12 @@ go by formula rather than name is mostly preference. The user will most likely b
 type typically provide formulas rather than chemical names. In addition, formulas are universal - names are not.
 Therefore, the user must enter the formula. There input is validated and if no chemical is found in the dataframe,
 the user is notified. There is a message letting the user know if a chemical has been found and a prompt to 
-enter the coeffient from the equation or 0 if they entered this formula in error.
+enter the coefficient from the equation or 0 if they entered this formula in error.
 ![heroku data entry](assets/screenshots/heroku_entry.png)
 > easily enter chemical quantities and formulas
 > be given hints as to how to properly enter data
 > clear my entries if I make a mistake
-> be notified when I make an improper entry. I should not have to restart from the beginning if I make a mistak
+> be notified when I make an improper entry. I should not have to restart from the beginning if I make a mistake
 
 Once the user enters a coefficient, they are given a prompt to enter it as either a product or a reactant.
 ![heroku enter chemical](assets/screenshots/heroku_enter_chemical.png)
@@ -144,7 +144,7 @@ and color coded with different borders.
 The output panel features three boxes. Two are labelled for reactants and products. The third is for output.
 The borders of the reactant/product boxes match those of the input fields. If the user enters incorrect
 input, they are notified in the third box. These windows will automatically have scrollbars if content goes 
-offscreen. However, most chemical equations (especially those at an introductory level) rarely have more than two or
+off-screen. However, most chemical equations (especially those at an introductory level) rarely have more than two or
 three products and reactants. Thus, for the vast majority of use cases, the content a user would enter will fit
 on the screen.
 ![output panel](assets/screenshots/output_panel.png)
@@ -358,7 +358,7 @@ compare user input to regex expression
       return FALSE
 ```
 This is the logic to determine if the input index is within range. It will only be called if the input pattern
-matches the requirment of being in the form integer,integer.
+matches the requirement of being in the form integer,integer.
 ```
 #split the user input into an array of two
 split_string_aray = user_input.split(",")
@@ -448,20 +448,20 @@ developed to perform the chemical calculations are simple enough to be tested ma
 ## Manual Testing Heroku App
 | Test Description              | Test                                                                                                                        | Result |
 |-------------------------------|-----------------------------------------------------------------------------------------------------------------------------|--------|
-| instructions are visible      | When the app is loaded <br> the instructions are visible                                                                    | PASSS  |
+| instructions are visible      | When the app is loaded <br> the instructions are visible                                                                    | PASS   |
 | instructions are visible      | When the user enters i on the command prompt <br> the instructions are printed                                              | PASS   |
 | quit function                 | When the user presses q on the command prompt <br> the app quits                                                            | PASS   |
-| display data                  | When the user presses d on the command primpt <br> the data table is displayed <br> five rows are displayed                 | PASS   |
+| display data                  | When the user presses d on the command prompt <br> the data table is displayed <br> five rows are displayed                 | PASS   |
 | next set of data displayed    | When the user presses  <br> the next five rows of data are displayed. <br> if they hit enter, they return to command prompt | PASS   |
 | user can see selections       | When user presses p on command prompt <bre> list of products is shown.                                                      | PASS   |
 | user can see selections       | When user presses r on command prompt <br> list of reactants is shown.                                                      | PASS   |
 | user can clear selections     | When user enters clear on command prompt <br> and then prints products or reactants <br> empty list is displayed            | PASS   |
-| user gets calculation report  | When user enters c on command prompt <b> caluculation report is displayed with formatting <br> and selected chemicals       | PASS   |
+| user gets calculation report  | When user enters c on command prompt <b> calculation report is displayed with formatting <br> and selected chemicals        | PASS   |
 | no calculations on empty list | If reactant or product list is empty <br> no calculations are performed <br> user is notified                               | PASS   |
 | invalid input is handled      | When the user enters invalid coefficient <br> the user is notified and asked again                                          | PASS   |
 | invalid input is handled      | When the user enters non existent formula <br> the user is notified and returned to command prompt                          | PASS   |
 | invalid input is handled      | When the user enters invalid index when more than one match is found <br> the user is notified and asked again              | PASS   |
-| invalid input is handled      | When the user enters invalid choice for product or reactant <br> the user is notified and asked again                        | PASS   |
+| invalid input is handled      | When the user enters invalid choice for product or reactant <br> the user is notified and asked again                       | PASS   |
 
 ## Manual Testing Textual App
 | Test Description                               | Test                                                                                                                                                                                                                                | Result |
@@ -489,7 +489,7 @@ a calculator - the machine simply performs the calculations based on the input. 
 + Entering data directly from the table. It would be nice if the user could simply highlight the chemical in the table and either
 by hitting enter or some other key add it to the list of products or reactants. The Table object in the Rich library does have
 responsive elements. However, the requirement of quantities in addition to the chemical requires a non-trivial handling of user keyboard input.
-+ Editing the list of products and reactants would also be a good feature to add. Right now, if the user accidentaly
++ Editing the list of products and reactants would also be a good feature to add. Right now, if the user accidentally
 adds a chemical to the list, they must clear the data and start over.
 # Unfixed bugs
 + In the textual version of the app, sometimes the reactants or products do not show in the output window
@@ -560,7 +560,7 @@ CodeInstitute. This particular repository was named [ci-project-3-deployment](ht
 pip3 freeze > requirements.txt
 ```
 + copied over the requirements.txt to the deployment repository
-+ Updated the python enviroment in the deployment repository
++ Updated the python environment in the deployment repository
 ```
 pip3 install -r requirements.txt
 ```
@@ -589,7 +589,7 @@ included in the folder. The pyinstaller package can be rather complicated so the
 that allows the developer to select options and then run the script. 
 
 This process must be run for each operating system for which an executable will be run. Executables were prepared 
-for MacOS, Linux, and Windows. The process is the same for all platforms.
+for macOS, Linux, and Windows. The process is the same for all platforms.
 
 ### Creating the Binaries
 + install pyinstaller
