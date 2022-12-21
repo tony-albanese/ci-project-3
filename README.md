@@ -52,7 +52,7 @@ mock terminal with a fixed size. The widgets are not displayed properly in the m
 
 Therefore, there is the web version which can be found here: [Thermodynamic Calculator on Heroku](https://thermodynamic-calculator.herokuapp.com/) 
 <br> The binary versions using textual are available for download available here: [Thermodynamics Calculator](https://tony-albanese.github.io/chem-calc-landing-page/)
-
+<br> Here is a link to a sample calculation if you want to perform one yourself: [practice calculation](https://github.com/tony-albanese/chem-calc-landing-page/blob/14fb2a4e5b01ae56e6c4f80323066264d6597ad3/media/sample_problem.pdf)
 ## Features Heroku Version App
 ### Instructions
 The instructions for the app are displayed when the app runs. The user can bring up the instructions at any point
@@ -532,6 +532,9 @@ large sets of data. The data in this project is accessed and queried as a pandas
   * Copied the [clone url](https://github.com/tony-albanese/ci-project-3.git) for the repository
   * Selected an empty project folder
   * Clicked on the Clone button at the bottom of the dialog
+
+## Workflow and Strategy
+
 
 ## Project Structure
 > This folder simply contains the images of screenshots for the README  
