@@ -599,11 +599,11 @@ for macOS, Linux, and Windows. The process is the same for all platforms.
 ### Creating the Binaries
 + install pyinstaller
 ```
-pip3 install pyinstaller
+$ pip3 install pyinstaller
 ```
 + install auto-py-to-exe
 ```
-pip3 install auto-py-to-exe
+$ pip3 install auto-py-to-exe
 ```
 run the script
 ```
